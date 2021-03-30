@@ -4,45 +4,62 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Food Bank',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    latitude: "",
+    longitude: "",
+    scale: 14,
+    markers: [ //标志点的位置
+      //位置
+      {
+        id: 0,
+        iconPath: "../../images/map.png",
+        latitude: 31.288407,
+        longitude: 121.207383,
+        width: 28,
+        height: 32,
+        label: {
+          content: "商家1",
+        }
+      },
+      {
+        id: 1,
+        iconPath: "../../images/map.png",
+        latitude: 31.298407,
+        longitude: 121.217383,
+        width: 28,
+        height: 32,
+        label: {
+          content: "商家2",
+        }
+      }
+    ],
+
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+  onLoad: function (options) {
+    var that = this
+    //获取当前的地理位置、速度
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: function (res) {
+        that.mpCtx = wx.createMapContext("myMap");
+        //赋值经纬度
+        console.log("onLoad", res),
+          that.setData({
+            latitude: res.latitude,
+            longitude: res.longitude,
+          })
       }
     })
   },
-  getUserInfo(e) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  bindtap(e) {
+    console.log("bindtap", e);
+    // console.log(this.data.latitude, this.data.longitude)
+    this.mpCtx.moveToLocation();
+  },
+  bindmarkertap(e) {
+    console.log("bindmarkertap", e);
+    this.mpCtx.moveToLocation({
+      latitude: this.data.markers[e.detail.markerId].latitude,
+      longitude: this.data.markers[e.detail.markerId].longitude,
     })
-  }
+  },
 })
