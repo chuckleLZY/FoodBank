@@ -7,3 +7,49 @@
     </cover-view>
   </map>
 </view>
+<view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
+  <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
+    <button type="common" class="changePositionButton" bindtap="changePosition"></button>
+  </view>
+  <view class="page-section-spacing" style="height:{{upperViewHeight-20}}px">
+    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
+      bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <view class="scroll-view-item">
+        <view class="item">
+          <view class="innerItem">
+            <image class="innerItemCover" src="../../images/1.png" bindtap='getinnerItemCoverInfo'
+              data-src="Python Java C++"></image>
+            <view class="innerItemTest">Python Java C++ ,</view>
+          </view>
+        </view>
+      </view>
+      <view class="scroll-view-item">
+        <view class="item">
+          <view class="innerItem">
+            <image class="innerItemCover" src="../../images/2.png" bindtap='getinnerItemCoverInfo'
+              data-src="Line Line So Easy ;"></image>
+            <view class="innerItemTest">Line Line So Easy ;</view>
+          </view>
+        </view>
+      </view>
+      <view class="scroll-view-item">
+        <view class="item">
+          <view class="innerItem">
+            <image class="innerItemCover" src="../../images/3.png" bindtap='getinnerItemCoverInfo' data-src="Years Months Weeks">
+            </image>
+            <view class="innerItemTest">Years Months Weeks ,</view>
+          </view>
+        </view>
+      </view>
+      <view class="scroll-view-item">
+        <view class="item">
+          <view class="innerItem">
+            <image class="innerItemCover" src="../../images/4.png" bindtap='getinnerItemCoverInfo' data-src="Day Day No Bug .">
+            </image>
+            <view class="innerItemTest">Day Day No Bug .</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

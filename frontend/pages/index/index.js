@@ -4,6 +4,9 @@ const app = getApp()
 
 Page({
   data: {
+    toView: 'green',
+    upperViewTop: 100,
+    upperViewHeight: 120,
     latitude: "",
     longitude: "",
     scale: 14,
@@ -35,6 +38,12 @@ Page({
 
   },
   onLoad: function (options) {
+    this.setData({
+      //设置map上层的信息层的初始位置
+      upperViewTop: wx.getSystemInfoSync().windowHeight / 4 * 3,
+      //设置map上层的信息层的初始高度
+      upperViewHeight: wx.getSystemInfoSync().windowHeight / 4,
+    })
     var that = this
     //获取当前的地理位置、速度
     wx.getLocation({
@@ -49,6 +58,7 @@ Page({
           })
       }
     })
+
   },
   bindtap(e) {
     console.log("bindtap", e);
@@ -62,4 +72,67 @@ Page({
       longitude: this.data.markers[e.detail.markerId].longitude,
     })
   },
+  changePosition() {
+    //改变map上层的信息层的位置与高度
+    console.log("changePosition");
+    if (this.data.upperViewHeight == wx.getSystemInfoSync().windowHeight / 2) {
+      console.log("here111");
+      var animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease',
+      });
+      animation.translate(0, 0).step()
+      this.setData({
+          ani: animation.export(),
+        }),
+        this.setData({
+          upperViewHeight: this.data.upperViewHeight - wx.getSystemInfoSync().windowHeight / 4,
+        })
+
+    } else {
+      console.log("here222");
+      var animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease',
+      });
+      animation.translate(0, -wx.getSystemInfoSync().windowHeight / 4).step()
+      this.setData({
+        ani: animation.export(),
+        upperViewHeight: this.data.upperViewHeight + wx.getSystemInfoSync().windowHeight / 4,
+      })
+    }
+  },
+  upper(e) {
+    console.log(e)
+  },
+  lower(e) {
+    console.log(e)
+  },
+  scroll(e) {
+    console.log(e)
+  },
+  scrollToTop() {
+    this.setAction({
+      scrollTop: 0
+    })
+  },
+  tap() {
+    for (let i = 0; i < order.length; ++i) {
+      if (order[i] === this.data.toView) {
+        this.setData({
+          toView: order[i + 1],
+          scrollTop: (i + 1) * 200
+        })
+        break
+      }
+    }
+  },
+  tapMove() {
+    this.setData({
+      scrollTop: this.data.scrollTop + 10
+    })
+  },
+  getinnerItemCoverInfo(e) {
+    console.log(e.currentTarget.dataset)
+  }
 })
