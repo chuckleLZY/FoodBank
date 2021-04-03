@@ -51,7 +51,7 @@ Page({
       success: function (res) {
         that.mpCtx = wx.createMapContext("myMap");
         //赋值经纬度
-        console.log("onLoad", res),
+        // console.log("onLoad", res),
           that.setData({
             latitude: res.latitude,
             longitude: res.longitude,
