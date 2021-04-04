@@ -1,29 +1,35 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/personInfo/personInfo",
+    "pages/favorite/favorite"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#9ccd7a",
+    "navigationBarTitleText": "LOHAS",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/logs/logs",
-      "text": "我的"
-    }],
-    "position": "bottom"
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/personInfo/personInfo",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom",
+    "selectedColor": "#9ccd7a"
   },
- "permission": {
-  "scope.userLocation": {
-    "desc": "你的位置信息将用于小程序位置接口的效果展示"
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
-}
 }
