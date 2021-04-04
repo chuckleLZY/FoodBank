@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-swipeout": "../../dist/swipeout/index",
+    "i-cell": "../../dist/cell/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-card" : "../../dist/card/index",
+    "i-icon" : "../../dist/icon/index",
+    "i-action-sheet": "../../dist/action-sheet/index"
+  }
+}
