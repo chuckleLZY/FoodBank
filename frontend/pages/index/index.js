@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     total_shop_briefinfo_items: [],
+    heightRange: 0,
     shop_briefinfo_items_that_shows_on_the_screen: [],
     toView: 'green',
     upperViewTop: 100,
@@ -66,11 +67,13 @@ Page({
       console.log(err);
     })
     this.setData({
+      heightRange: parseInt(wx.getSystemInfoSync().windowHeight / 4),
       //设置map上层的信息层的初始位置
-      upperViewTop: wx.getSystemInfoSync().windowHeight / 4 * 3,
+      upperViewTop: parseInt(wx.getSystemInfoSync().windowHeight / 4) * 3,
       //设置map上层的信息层的初始高度
-      upperViewHeight: wx.getSystemInfoSync().windowHeight / 4,
-    })
+      upperViewHeight: parseInt(wx.getSystemInfoSync().windowHeight / 4),
+    });
+
     var that = this
     //获取当前的地理位置、速度
     wx.getLocation({
@@ -116,20 +119,21 @@ Page({
     this.mpCtx.moveToLocation();
   },
   click_shop(e) {
-    console.log(e.currentTarget.dataset.id); //这玩意是shop_id
+    console.log(e.currentTarget.dataset.shop_id); //这玩意是shop_id
+    this.mpCtx.moveToLocation({
+      latitude: this.data.shop_briefinfo_items_that_shows_on_the_screen[e.currentTarget.dataset.index].shop_latitude,
+      longitude: this.data.shop_briefinfo_items_that_shows_on_the_screen[e.currentTarget.dataset.index].shop_longitude,
+    });
     wx.navigateTo({
-      url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + e.currentTarget.dataset.id,
+      url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + e.currentTarget.dataset.shop_id,
     })
   },
   bindmarkertap(e) {
     console.log("bindmarkertap", e);
-
-    // this.mpCtx.moveToLocation({
-    //   latitude: this.data.markers[e.detail.markerId].latitude,
-    //   longitude: this.data.markers[e.detail.markerId].longitude,
-    // });
-
-
+    this.mpCtx.moveToLocation({
+      latitude: this.data.markers[e.detail.markerId].latitude,
+      longitude: this.data.markers[e.detail.markerId].longitude,
+    });
     wx.navigateTo({
       url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + this.data.markers[e.detail.markerId].desc,
     })
@@ -137,19 +141,19 @@ Page({
 
   changePosition() {
     //改变map上层的信息层的位置与高度
-    console.log("changePosition", this.data.upperViewHeight);
-    if (this.data.upperViewHeight == wx.getSystemInfoSync().windowHeight / 2) {
+    console.log("changePosition", this.data.upperViewHeight, this.data.heightRange);
+    if (this.data.upperViewHeight == this.data.heightRange) {
       console.log("here111");
       var animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
       });
-      animation.translate(0, 0).step()
+      animation.translate(0, -this.data.heightRange).step()
       this.setData({
           ani: animation.export(),
         }),
         this.setData({
-          upperViewHeight: this.data.upperViewHeight - wx.getSystemInfoSync().windowHeight / 4,
+          upperViewHeight: this.data.upperViewHeight + this.data.heightRange,
         })
 
     } else {
@@ -159,11 +163,11 @@ Page({
         timingFunction: 'ease',
       });
       console.log("here333")
-      animation.translate(0, -wx.getSystemInfoSync().windowHeight / 4).step()
+      animation.translate(0, 0).step()
       console.log("here444")
       this.setData({
         ani: animation.export(),
-        upperViewHeight: this.data.upperViewHeight + wx.getSystemInfoSync().windowHeight / 4,
+        upperViewHeight: this.data.upperViewHeight - this.data.heightRange,
       })
       console.log("here555")
     }

@@ -14,7 +14,7 @@
   <view class="page-section-spacing" style="height:{{upperViewHeight-20}}px">
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
       bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="click_shop" data-id="{{item.shop_id}}">
+      <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="click_shop" data-shop_id="{{item.shop_id}}"data-index="{{index}}"  >
         <view class="scroll-view-item" >
           <view class="item">
             <view class="innerItem">
