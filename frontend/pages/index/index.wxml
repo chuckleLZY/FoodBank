@@ -14,7 +14,17 @@
   <view class="page-section-spacing" style="height:{{upperViewHeight-20}}px">
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
       bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view class="scroll-view-item">
+      <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="click_shop" data-id="{{item.shop_id}}">
+        <view class="scroll-view-item" >
+          <view class="item">
+            <view class="innerItem">
+              <image class="innerItemCover" src="{{item.avatar}}" ></image>
+              <view class="innerItemTest">{{item.shop_name}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="scroll-view-item">
         <view class="item">
           <view class="innerItem">
             <image class="innerItemCover" src="../../images/1.png" bindtap='getinnerItemCoverInfo'
@@ -35,7 +45,8 @@
       <view class="scroll-view-item">
         <view class="item">
           <view class="innerItem">
-            <image class="innerItemCover" src="../../images/3.png" bindtap='getinnerItemCoverInfo' data-src="Years Months Weeks">
+            <image class="innerItemCover" src="../../images/3.png" bindtap='getinnerItemCoverInfo'
+              data-src="Years Months Weeks">
             </image>
             <view class="innerItemTest">Years Months Weeks ,</view>
           </view>
@@ -44,12 +55,13 @@
       <view class="scroll-view-item">
         <view class="item">
           <view class="innerItem">
-            <image class="innerItemCover" src="../../images/4.png" bindtap='getinnerItemCoverInfo' data-src="Day Day No Bug .">
+            <image class="innerItemCover" src="../../images/4.png" bindtap='getinnerItemCoverInfo'
+              data-src="Day Day No Bug .">
             </image>
             <view class="innerItemTest">Day Day No Bug .</view>
           </view>
         </view>
-      </view>
+      </view> -->
     </scroll-view>
   </view>
 </view>

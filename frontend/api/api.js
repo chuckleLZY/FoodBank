@@ -24,6 +24,7 @@ const host = "http://47.118.59.241:18080/api";
 
 
 const request = (url, options) => {
+  // console.log('url',url,'option',options);
   return new Promise((resolve, reject) => {
     // console.log("request", app.globalData.token, url, options)
     wx.request({
