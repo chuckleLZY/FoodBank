@@ -1,4 +1,28 @@
-<view>
-  <view>{{shop_detail.shop_id}}</view>
-  <view>{{shop_detail.shop_name}}</view>
+<view style="height:100%">
+  <image class="head_picture" src="{{shop_detail.head_picture}}"></image>
+  <view>
+    <view class="top_view">
+      <image class="avatar" src="{{shop_detail.avatar}}" mode="cover"></image>
+      <view class="favorite_image_view">
+        <image class="favorite_image" src="/images/favorite.png"></image>
+      </view>
+    </view>
+    <!-- 下面几行是商店详细信息 -->
+    <view>shop_name:{{shop_detail.shop_name}}</view>
+    <view>shop_address:{{shop_detail.shop_address}}</view>
+    <view>shop_business_hours:{{shop_detail.shop_business_hours}}</view>
+    <view>shop_intro:{{shop_detail.shop_intro}}</view>
+    <view>shop_lohas_info:{{shop_detail.shop_lohas_info}}</view>
+  </view>
+  <!-- 这里是临期商品列表 -->
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
+    scroll-top="{{scrollTop}}">
+    <view wx:for="{{ddl_product}}" data-index="{{index}}">
+      <view class="scroll-view-item">
+        <image class="innerItemCover" src="{{item.product_pic}}"></image>
+        <view class="innerItemTest">{{item.product_pic}}</view>
+      </view>
+    </view>
+
+  </scroll-view>
 </view>

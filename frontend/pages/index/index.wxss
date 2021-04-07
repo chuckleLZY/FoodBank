@@ -64,3 +64,14 @@
     /* float: left; */
     /* display: inline; */
 }
+
+.my_scroll-view_H{
+  white-space: nowrap;
+  height: 45px;
+}
+
+.my_scroll-view-item_H{
+  display: inline-block;
+  width: 100px;
+  height: 10px;
+}

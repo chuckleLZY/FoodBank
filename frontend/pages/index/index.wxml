@@ -2,66 +2,42 @@
 <view class="container">
   <map class='map' id="myMap" longitude='{{longitude}}' latitude='{{latitude}}' scale='{{scale}}' markers='{{markers}}'
     bindmarkertap='bindmarkertap' show-location='true'>
-    <cover-view class='top_nav_c' bindtap='bindtap'>
-      <cover-image src='../../images/position.png' class='c_img'></cover-image>
-    </cover-view>
   </map>
 </view>
 <view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
+  <cover-view class='top_nav_c' bindtap='bindtap'>
+      <cover-image src='../../images/position.png' class='c_img'></cover-image>
+    </cover-view>
+  <scroll-view class="my_scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        style="background: #FFFFFF;border-radius:50px">全部</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        style="background: #FFFFFF;border-radius:50px">衣</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        style="background: #FFFFFF;border-radius:50px">食</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        style="background: #FFFFFF;border-radius:50px">住</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        style="background: #FFFFFF;border-radius:50px">行</button></view>
+  </scroll-view>
   <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
     <button type="common" class="changePositionButton" bindtap="changePosition"></button>
   </view>
-  <view class="page-section-spacing" style="height:{{upperViewHeight-20}}px">
+
+  <view class="page-section-spacing" style="height:{{upperViewHeight-40}}px">
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
       bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="click_shop" data-shop_id="{{item.shop_id}}"data-index="{{index}}"  >
-        <view class="scroll-view-item" >
+      <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="to_shop_detail" wx:key="shop_id"
+        data-shop_id="{{item.shop_id}}" data-index="{{index}}">
+        <view class="scroll-view-item">
           <view class="item">
             <view class="innerItem">
-              <image class="innerItemCover" src="{{item.avatar}}" ></image>
+              <image class="innerItemCover" src="{{item.avatar}}"></image>
               <view class="innerItemTest">{{item.shop_name}}</view>
             </view>
           </view>
         </view>
       </view>
-      <!-- <view class="scroll-view-item">
-        <view class="item">
-          <view class="innerItem">
-            <image class="innerItemCover" src="../../images/1.png" bindtap='getinnerItemCoverInfo'
-              data-src="Python Java C++"></image>
-            <view class="innerItemTest">Python Java C++ ,</view>
-          </view>
-        </view>
-      </view>
-      <view class="scroll-view-item">
-        <view class="item">
-          <view class="innerItem">
-            <image class="innerItemCover" src="../../images/2.png" bindtap='getinnerItemCoverInfo'
-              data-src="Line Line So Easy ;"></image>
-            <view class="innerItemTest">Line Line So Easy ;</view>
-          </view>
-        </view>
-      </view>
-      <view class="scroll-view-item">
-        <view class="item">
-          <view class="innerItem">
-            <image class="innerItemCover" src="../../images/3.png" bindtap='getinnerItemCoverInfo'
-              data-src="Years Months Weeks">
-            </image>
-            <view class="innerItemTest">Years Months Weeks ,</view>
-          </view>
-        </view>
-      </view>
-      <view class="scroll-view-item">
-        <view class="item">
-          <view class="innerItem">
-            <image class="innerItemCover" src="../../images/4.png" bindtap='getinnerItemCoverInfo'
-              data-src="Day Day No Bug .">
-            </image>
-            <view class="innerItemTest">Day Day No Bug .</view>
-          </view>
-        </view>
-      </view> -->
     </scroll-view>
   </view>
 </view>

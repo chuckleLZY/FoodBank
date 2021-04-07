@@ -61,7 +61,7 @@ Page({
       this.setData({
         shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen
       })
-      console.log("this.data.shop_briefinfo_items_that_shows_on_the_screen", this.data.shop_briefinfo_items_that_shows_on_the_screen)
+      // console.log("this.data.shop_briefinfo_items_that_shows_on_the_screen", this.data.shop_briefinfo_items_that_shows_on_the_screen)
       this.setMarkers();
     }).catch(err => {
       console.log(err);
@@ -118,7 +118,7 @@ Page({
     // console.log(this.data.latitude, this.data.longitude)
     this.mpCtx.moveToLocation();
   },
-  click_shop(e) {
+  to_shop_detail(e) {
     console.log(e.currentTarget.dataset.shop_id); //这玩意是shop_id
     this.mpCtx.moveToLocation({
       latitude: this.data.shop_briefinfo_items_that_shows_on_the_screen[e.currentTarget.dataset.index].shop_latitude,
@@ -148,7 +148,7 @@ Page({
         duration: 500,
         timingFunction: 'ease',
       });
-      animation.translate(0, -this.data.heightRange).step()
+      animation.translate(0, -this.data.heightRange).step();
       this.setData({
           ani: animation.export(),
         }),
@@ -162,14 +162,11 @@ Page({
         duration: 500,
         timingFunction: 'ease',
       });
-      console.log("here333")
       animation.translate(0, 0).step()
-      console.log("here444")
       this.setData({
         ani: animation.export(),
         upperViewHeight: this.data.upperViewHeight - this.data.heightRange,
       })
-      console.log("here555")
     }
   },
   upper(e) {
