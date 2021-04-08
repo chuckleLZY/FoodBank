@@ -1,28 +1,62 @@
 <view style="height:100%">
-  <image class="head_picture" src="{{shop_detail.head_picture}}"></image>
-  <view>
+  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
+    scroll-top="{{scrollTop}}" style="height:100%">
+    <!-- 这里是商店的图片 -->
+    <image class="head_picture" src="{{shop_detail.head_picture}}"></image>
+    <!-- 这里是商店的圆形图标 -->
     <view class="top_view">
       <image class="avatar" src="{{shop_detail.avatar}}" mode="cover"></image>
-      <view class="favorite_image_view">
-        <image class="favorite_image" src="/images/favorite.png"></image>
+    </view>
+    <!-- 这里是收藏的图标 -->
+    <view class="favorite_image_view">
+      <image class="favorite_image" src="/images/favorite.png"></image>
+    </view>
+    <view style="padding-left:10px; padding-right:10px">
+      <view>
+        <!-- 下面几行是商店详细信息 -->
+        <view style="margin-top:15px; font-size:25px; font-weight:bold; ">{{shop_detail.shop_name}}</view>
+        <view style="font-size:20px; ">shop_intro:{{shop_detail.shop_intro}}</view>
+        <view style="margin-top:20px; font-size:20px; ">营业时间:{{shop_detail.shop_business_hours}}</view>
+        <!-- 这玩意模拟横线 -->
+        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
+        <view style="margin-top:15px; font-size:20px; ">地址:{{shop_detail.shop_address}}</view>
+        <!-- 这玩意模拟横线 -->
+        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
+        <view style="margin-top:30px; font-size:25px; ">情报</view>
+        <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
+          shop_lohas_info:{{shop_detail.shop_lohas_info}}</view>
+      </view>
+      <!-- 这里是临期商品列表 -->
+      <view style="margin-top:20px; font-size:25px; ">列表</view>
+      <view wx:for="{{ddl_product}}" data-index="{{index}}">
+        <view>
+          <image class="innerItemCover" src="{{item.product_pic}}"></image>
+          <view class="innerItemTest" >{{item.product_name}}</view>
+        <view style=" background: #E0E3DA; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
+        </view>
+      </view>
+      <!-- 这里是评论列表 -->
+      <view style="margin-top:20px; font-size:25px; ">评论</view>
+      <view wx:for="{{shop_comment}}" data-index="{{index}}">
+        <view class="innerItemTest">{{item.content}}</view>
       </view>
     </view>
-    <!-- 下面几行是商店详细信息 -->
-    <view>shop_name:{{shop_detail.shop_name}}</view>
-    <view>shop_address:{{shop_detail.shop_address}}</view>
-    <view>shop_business_hours:{{shop_detail.shop_business_hours}}</view>
-    <view>shop_intro:{{shop_detail.shop_intro}}</view>
-    <view>shop_lohas_info:{{shop_detail.shop_lohas_info}}</view>
-  </view>
-  <!-- 这里是临期商品列表 -->
-  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
-    scroll-top="{{scrollTop}}">
-    <view wx:for="{{ddl_product}}" data-index="{{index}}">
-      <view class="scroll-view-item">
-        <image class="innerItemCover" src="{{item.product_pic}}"></image>
-        <view class="innerItemTest">{{item.product_pic}}</view>
-      </view>
-    </view>
-
   </scroll-view>
+  <!-- 评论按钮 底部固定 -->
+  <view class="page__hd" style="position:fixed; bottom:50px">
+    <button type="primary" bindtap="comment" style="position: relative; left: 198rpx; top: -24rpx；">评论</button>
+  </view>
+  <!-- 评论输入框 -->
+  <block wx:if="{{comment_input_show}}">
+    <view class='box' style="position: relative; bottom: 400px; background: #9ccd7a; height: 223rpx; width: 660rpx; left: 46rpx; top: -819rpx; border-radius: 10px; display: block; box-sizing: border-box">
+      <view style="margin-top:10px">
+        <input style="margin-left: 45PX; width: 500rpx; height: 86rpx; box-sizing: border-box; background: whitesmoke; padding-left: 10px; border-radius: 10px"  class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
+      </view>
+      <button type="primary" size="mini" bindtap="comfirm_comment" style="position: relative; left: 145rpx; top: 58rpx">确定</button>
+      <button type="primary" size="mini" bindtap="cancel_comment" style="position: relative; left: 294rpx; top: 58rpx">取消</button>
+      <!-- <button type="primary"  bindtap="comfirm_comment" style="position: relative; left: -125rpx; top: 80rpx; width: 136rpx; height: 40rpx; display: block; box-sizing: border-box">确定</button> -->
+      <!-- <button type="primary" bindtap="cancel_comment" style="position: relative; left: 98rpx; top: 40rpx; width: 135rpx; height: 40rpx; display: block; box-sizing: border-box">取消</button> -->
+    </view>
+  </block>
+
 </view>

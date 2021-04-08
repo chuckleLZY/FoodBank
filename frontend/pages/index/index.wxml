@@ -21,7 +21,7 @@
         style="background: #FFFFFF;border-radius:50px">行</button></view>
   </scroll-view>
   <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
-    <button type="common" class="changePositionButton" bindtap="changePosition"></button>
+    <button type="common" class="changePositionButton" bindtap="changePosition" style="position: relative; left: NaNrpx; top: NaNrpx"></button>
   </view>
 
   <view class="page-section-spacing" style="height:{{upperViewHeight-40}}px">

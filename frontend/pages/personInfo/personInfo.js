@@ -26,15 +26,16 @@ Page({
             console.log("hello world", res);
             // 发送 unionID 到后台进行登录，后台再向微信发送信息换取 openId, sessionKey, unionId
             wx.request({
-              url: 'http://47.118.59.241:18080/api/user/login',
+              url: 'https://www.lohas.ink/api/user/login',
               data: {
                 "code": res.code
               },
               method: "POST",
               success(res) {
-                console.log("loginSuccess", res);
+                console.log(res.header)
+                console.log("loginSuccess，token is ", res.header["token"]);
                 // 成功后在app.globalData里面记录下token
-                app.globalData.token = res.header["Token"];
+                app.globalData.token = res.header["token"];
               },
               fail(error) {
                 console.log("loginError", error);
