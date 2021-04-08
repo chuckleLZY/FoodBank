@@ -57,12 +57,12 @@
   /* display: inline; */
 }
 
-.innerItemTest {
+/* .innerItemTest { */
   /* padding-left: 80px; */
   /* margin-top: -80px; */
     /* float: left; */
     /* display: inline; */
-}
+/* } */
 
 .my_scroll-view_H{
   white-space: nowrap;

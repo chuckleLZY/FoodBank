@@ -1,4 +1,5 @@
 import api from '../../api/api'
+const app = getApp();
 
 Page({
   data: {
@@ -67,9 +68,18 @@ Page({
   comment() {
     // 评论
     console.log("comment");
-    this.setData({
-      comment_input_show: true
-    })
+    // 如果没有token，就跳转到登录页面
+    if(!app.globalData.token){
+      wx.switchTab({
+        url: '../personInfo/personInfo',
+      })
+    }
+    else{
+      this.setData({
+        comment_input_show: true
+      })
+    }
+
   },
   comment_input(e) {
     // 接收输入框的输入
