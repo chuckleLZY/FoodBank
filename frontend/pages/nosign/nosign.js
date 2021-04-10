@@ -1,4 +1,4 @@
-
+// pages/nosign/nosign.js
 Page({
 
   /**
@@ -6,26 +6,7 @@ Page({
    */
   data: {
 
-    nickName : "",
-    avatarUrl : ""
   },
-  showUserInfoTap:function(){
-    var that = this;
-    wx.getUserInfo({
-      success: function(res) {
-        console.log(res);
-        
-        var userInfo = res.userInfo
-        console.log(userInfo);
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        that.setData({
-          nickName : nickName,
-          avatarUrl : avatarUrl
-        })
-      }
-    })
-  }
 
   /**
    * 生命周期函数--监听页面加载
@@ -83,4 +64,3 @@ Page({
 
   }
 })
-
