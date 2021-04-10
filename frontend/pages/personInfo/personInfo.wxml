@@ -1,5 +1,5 @@
 <!--pages/first/first.wxml-->
-<view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box" wx-if="{{hasUserInfo}}">
+<view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box" >
     <view class="flex-container">
 
         <button wx:if="{{!avatarUrl}}" class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap" >未登录</button>

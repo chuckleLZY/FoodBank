@@ -1,3 +1,4 @@
+const app = getApp()
 
 Page({
 
@@ -5,27 +6,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-
-    nickName : "",
-    avatarUrl : ""
+    userInfo: [],
+    nickName: "",
+    avatarUrl: ""
   },
-  showUserInfoTap:function(){
-    var that = this;
-    wx.getUserInfo({
-      success: function(res) {
-        console.log(res);
-        
-        var userInfo = res.userInfo
-        console.log(userInfo);
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        that.setData({
-          nickName : nickName,
-          avatarUrl : avatarUrl
+  showUserInfoTap: function () {
+
+    // 授权
+    wx.getUserProfile({
+      desc: '快把信息给我', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res.userInfo);
+        this.setData({
+          userInfo: res.userInfo,
+          nickName: res.userInfo.nickName,
+          avatarUrl: res.userInfo.avatarUrl
+        });
+        // wx.login 获得用户的unionID
+        wx.login({
+          success: res => {
+            console.log("hello world", res);
+            // 发送 unionID 到后台进行登录，后台再向微信发送信息换取 openId, sessionKey, unionId
+            wx.request({
+              url: 'https://www.lohas.ink/api/user/login',
+              data: {
+                "code": res.code
+              },
+              method: "POST",
+              success(res) {
+                // console.log(res.header)
+                // console.log("loginSuccess，token is ", res.header["token"]);
+                // 成功后在app.globalData里面记录下token
+                app.globalData.token = res.header["token"];
+              },
+              fail(error) {
+                console.log("loginError", error);
+              }
+            })
+          }
         })
+      },
+      fail: (res) => {
+        console.log('getUserProfileFail', res);
       }
     })
-  }
+
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -83,4 +109,3 @@ Page({
 
   }
 })
-
