@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-button":"../../dist/button/index",
+    "i-icon": "../../dist/icon/index"
+  },
+  "backgroundColor":"#9ccd7a"
+
+}

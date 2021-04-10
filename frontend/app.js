@@ -13,7 +13,7 @@ App({
         console.log("hello world", res);
         // 向服务器发送登录请求
         wx.request({
-          url: 'http://47.118.59.241:18080/api/user/login',
+          url: 'https://www.lohas.ink/api/user/login',
           data: {
             "code": res.code
           },

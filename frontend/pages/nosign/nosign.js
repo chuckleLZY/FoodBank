@@ -1,29 +1,11 @@
+// pages/nosign/nosign.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    nickName : "",
-    avatarUrl : ""
 
-  },
-  showUserInfoTap:function(){
-    var that = this;
-    wx.getUserInfo({
-      success: function(res) {
-        console.log(res);
-        
-        var userInfo = res.userInfo
-        console.log(userInfo);
-        var nickName = userInfo.nickName
-        var avatarUrl = userInfo.avatarUrl
-        that.setData({
-          nickName : nickName,
-          avatarUrl : avatarUrl
-        })
-      }
-    })
   },
 
   /**

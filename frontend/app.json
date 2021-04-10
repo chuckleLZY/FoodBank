@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/personInfo/personInfo",
-    "pages/favorite/favorite"
+    "pages/favorite/favorite",
+    "pages/nosign/nosign"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,11 +18,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "/images/main_tabbar.png",
+        "selectedIconPath": "/images/main_tabbar_select.png"
       },
       {
         "pagePath": "pages/personInfo/personInfo",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "/images/person_tabbar.png",
+        "selectedIconPath": "/images/person_tabbar_select.png"
       }
     ],
     "position": "bottom",

@@ -1,15 +1,17 @@
 <!--pages/first/first.wxml-->
 <view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box">
     <view class="flex-container">
-        <view class="UserHeadImage">
-            <image src="/images/labi.jpeg"></image>
+        <button wx:if="{{!avatarUrl}}" class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap" >未登录</button>
+        <view class="UserHeadImage" >
+            <image wx:if="{{avatarUrl}}" src='{{avatarUrl}}' />
         </view>
-        <view class="UserName">
-            <view class="user-name"  catchtap="changeMoney">{{motto}}</view>
-            <view class="PersonalitySignature">用户可自定义个性签名(限制字数）</view>
+        <view class="UserName" >
+            <view wx:if="{{nickName}}" class='user-name' >{{nickName}}</view>
+            <view wx:if="{{nickName}}" class="PersonalitySignature">用户可自定义个性签名(限制字数）</view>
         </view>
+        
     </view>
-    
+
     
     <view class="Mine">
         <navigator class="Trans" url="/pages/favorite/favorite">
@@ -18,16 +20,17 @@
         </navigator>
         <navigator class="Trans" url="">
             <view>联系客服</view>
-            <image class="Instru" src="tishi.png"></image>
+            <image class="Instru" src=""></image>
         </navigator>
         <navigator class="Trans" url="">
             <view>投诉建议</view>
-            <image class="Instru" src="tishi.png"></image>
+            <image class="Instru" src=""></image>
         </navigator>
         <navigator class="Trans" url="">
             <view>商家登录</view>
-            <image class="Instru" src="tishi.png"></image>
+            <image class="Instru" src=""></image>
         </navigator>
     </view>
     <i-button bind:click="handleClick" i type="success" size="large" shape="circle">商家登陆</i-button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> ？？？</button>
 </view>

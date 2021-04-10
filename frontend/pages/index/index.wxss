@@ -58,9 +58,3 @@
   /* display: inline; */
 }
 
-.innerItemTest {
-  /* padding-left: 80px; */
-  /* margin-top: -80px; */
-    /* float: left; */
-    /* display: inline; */
-}
