@@ -15,32 +15,7 @@ Page({
     longitude: "",
     scale: 14,
     flag: false,
-    markers: [ //标志点的位置
-      //位置
-      // {
-      //   id: 0,
-      //   iconPath: "../../images/map.png",
-      //   latitude: 31.288407,
-      //   longitude: 121.207383,
-      //   width: 28,
-      //   height: 32,
-      //   label: {
-      //     content: "商家1",
-      //   }
-      // },
-      // {
-      //   id: 1,
-      //   iconPath: "../../images/map.png",
-      //   latitude: 31.298407,
-      //   longitude: 121.217383,
-      //   width: 28,
-      //   height: 32,
-      //   label: {
-      //     content: "商家2",
-      //   }
-      // }
-    ],
-
+    markers: [], // 地图标记点
   },
   onLoad: function (options) {
     api.post('/shopinfo/getbrief', {
@@ -69,9 +44,9 @@ Page({
     this.setData({
       heightRange: parseInt(wx.getSystemInfoSync().windowHeight / 4),
       //设置map上层的信息层的初始位置
-      upperViewTop: parseInt(wx.getSystemInfoSync().windowHeight / 4) * 3,
+      upperViewTop: wx.getSystemInfoSync().windowHeight - parseInt(wx.getSystemInfoSync().windowHeight / 4) - 95,
       //设置map上层的信息层的初始高度
-      upperViewHeight: parseInt(wx.getSystemInfoSync().windowHeight / 4),
+      upperViewHeight: parseInt(wx.getSystemInfoSync().windowHeight / 4) + 95,
     });
 
     var that = this
@@ -142,7 +117,7 @@ Page({
   changePosition() {
     //改变map上层的信息层的位置与高度
     console.log("changePosition", this.data.upperViewHeight, this.data.heightRange);
-    if (this.data.upperViewHeight == this.data.heightRange) {
+    if (!this.data.flag) {
       console.log("here111");
       var animation = wx.createAnimation({
         duration: 500,
@@ -150,6 +125,7 @@ Page({
       });
       animation.translate(0, -this.data.heightRange).step();
       this.setData({
+          flag: true,
           ani: animation.export(),
         }),
         this.setData({
@@ -165,8 +141,13 @@ Page({
       animation.translate(0, 0).step()
       this.setData({
         ani: animation.export(),
-        upperViewHeight: this.data.upperViewHeight - this.data.heightRange,
       })
+      setTimeout(() => {
+        this.setData({
+          flag: false,
+          upperViewHeight: parseInt(wx.getSystemInfoSync().windowHeight / 4) + 95,
+        })
+      }, 500);
     }
   },
   upper(e) {
