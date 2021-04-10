@@ -42,7 +42,6 @@ Page({
       "page_size": 100000,
       "shop_id": shop_id
     }).then(res => {
-      console.log('ddl_product', res);
       this.setData({
         ddl_product: res.ddlproduct_item_list
       })
@@ -56,34 +55,29 @@ Page({
       "page_size": 100000,
       "shop_id": shop_id
     }).then(res => {
-      console.log('shop_comment', res);
       this.setData({
         shop_comment: res.comment_item_list
       });
-      console.log(this.data.shop_comment)
     }).catch(err => {
       console.log(err);
     })
   },
   comment() {
     // 评论
-    console.log("comment");
     // 如果没有token，就跳转到登录页面
-    if(!app.globalData.token){
-      wx.switchTab({
-        url: '../personInfo/personInfo',
-      })
-    }
-    else{
+    // if(!app.globalData.token){
+    //   wx.switchTab({
+    //     url: '../personInfo/personInfo',
+    //   })
+    // }
+    // else{
       this.setData({
         comment_input_show: true
       })
-    }
-
+    // }
   },
   comment_input(e) {
     // 接收输入框的输入
-    // console.log(e.detail.value)
     this.setData({
       comment_text: e.detail.value
     })

@@ -5,9 +5,11 @@
   </map>
 </view>
 <view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
+  <!-- 回到当前定位的图标 -->
   <cover-view class='top_nav_c' bindtap='bindtap'>
-      <cover-image src='../../images/position.png' class='c_img'></cover-image>
-    </cover-view>
+    <cover-image src='../../images/position.png' class='c_img'></cover-image>
+  </cover-view>
+  <!-- 衣食住行选项 -->
   <scroll-view class="my_scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
         style="background: #FFFFFF;border-radius:50px">全部</button></view>
@@ -20,11 +22,13 @@
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
         style="background: #FFFFFF;border-radius:50px">行</button></view>
   </scroll-view>
+  <!-- 改变上层信息层的按钮 -->
   <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
-    <button type="common" class="changePositionButton" bindtap="changePosition" style="position: relative; left: NaNrpx; top: NaNrpx"></button>
+    <button type="common" class="changePositionButton" bindtap="changePosition"
+      style="position: relative; left: NaNrpx; top: NaNrpx"></button>
   </view>
-
-  <view class="page-section-spacing" style="height:{{upperViewHeight-40}}px">
+  <!-- 上层信息层 -->
+  <view class="page-section-spacing" style="height:{{upperViewHeight-95}}px">
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
       bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <view wx:for="{{shop_briefinfo_items_that_shows_on_the_screen}}" bindtap="to_shop_detail" wx:key="shop_id"
