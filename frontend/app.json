@@ -5,6 +5,7 @@
     "pages/personInfo/personInfo",
     "pages/favorite/favorite",
     "pages/nosign/nosign"
+    "pages/shopDetailedInfo/shopDetailedInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

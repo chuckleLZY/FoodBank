@@ -39,7 +39,6 @@
 
 .item {
   padding: 10px;
-
 }
 
 .innerItem {
@@ -56,5 +55,23 @@
   width: 60px;
   /* float: left; */
   /* display: inline; */
+}
+
+/* .innerItemTest { */
+  /* padding-left: 80px; */
+  /* margin-top: -80px; */
+    /* float: left; */
+    /* display: inline; */
+/* } */
+
+.my_scroll-view_H{
+  white-space: nowrap;
+  height: 45px;
+}
+
+.my_scroll-view-item_H{
+  display: inline-block;
+  width: 100px;
+  height: 10px;
 }
 

@@ -1,12 +1,13 @@
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
     nickName : "",
     avatarUrl : ""
-
   },
   showUserInfoTap:function(){
     var that = this;
@@ -24,7 +25,7 @@ Page({
         })
       }
     })
-  },
+  }
 
   /**
    * 生命周期函数--监听页面加载
@@ -82,3 +83,4 @@ Page({
 
   }
 })
+

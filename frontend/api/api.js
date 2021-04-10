@@ -20,17 +20,18 @@ api.get('/userinfo/get').then(res => {
 */
 
 const app = getApp();
-const host = "http://47.118.59.241:18080/api";
+const host = "https://www.lohas.ink/api";
 
 
 const request = (url, options) => {
+  // console.log('url',url,'option',options);
   return new Promise((resolve, reject) => {
-    // console.log("request", app.globalData.token, url, options)
+    console.log("request", app.globalData.token, url, options)
     wx.request({
       url: `${host}${url}`,
       method: options.method,
-      data: options.data,
-      // data: options.method === 'GET' ? options.data : JSON.stringify(options.data),
+      // data: options.data,
+      data: options.method === 'GET' ? options.data : JSON.stringify(options.data),
       header: {
         'token': app.globalData.token,
       },
