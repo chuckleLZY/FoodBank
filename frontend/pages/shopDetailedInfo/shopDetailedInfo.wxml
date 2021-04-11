@@ -17,23 +17,37 @@
         <view style="margin-top:15px; font-size:25px; font-weight:bold; ">{{shop_detail.shop_name}}</view>
         <view style="font-size:20px; ">shop_intro:{{shop_detail.shop_intro}}</view>
         <view style="margin-top:20px; font-size:20px; ">营业时间:{{shop_detail.shop_business_hours}}</view>
+
         <!-- 这玩意模拟横线 -->
         <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
         <view style="margin-top:15px; font-size:20px; ">地址:{{shop_detail.shop_address}}</view>
         <!-- 这玩意模拟横线 -->
         <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
+        <view style="margin-top:20px; font-size:20px; ">公告:{{shop_announcements.content}}</view>
+        <!-- 这玩意模拟横线 -->
+        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
         <view style="margin-top:30px; font-size:25px; ">情报</view>
         <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
-          shop_lohas_info:{{shop_detail.shop_lohas_info}}</view>
+          {{shop_detail.shop_lohas_info}}</view>
       </view>
+
       <!-- 这里是临期商品列表 -->
       <view style="margin-top:20px; font-size:25px; ">列表</view>
-      <view wx:for="{{ddl_product}}" data-index="{{index}}">
-        <view>
-          <image class="innerItemCover" src="{{item.product_pic}}"></image>
-          <view class="innerItemTest" >{{item.product_name}}</view>
-        <view style=" background: #E0E3DA; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
-        </view>
+      <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
+        <navigator>
+          <van-swipe-cell id="swipe-cell" left-width="{{ 65 }}" right-width="{{ 65 }}" name="{{item.product_id}}"
+            async-close bind:close="onClose">
+            <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
+              thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
+              class="announcement-card">
+              <view slot="footer">
+                <label>发布日期：{{item.product_pubdate}}</label>
+                <label>生产日期：{{item.production_date}}</label>
+                <label>过期日期：{{item.expiry_date}}</label>
+              </view>
+            </van-card>
+          </van-swipe-cell>
+        </navigator>
       </view>
       <!-- 这里是评论列表 -->
       <view style="margin-top:20px; font-size:25px; ">评论</view>
@@ -48,15 +62,19 @@
   </view>
   <!-- 评论输入框 -->
   <block wx:if="{{comment_input_show}}">
-    <view class='box' style="position: relative; bottom: 400px; background: #9ccd7a; height: 223rpx; width: 660rpx; left: 46rpx; top: -819rpx; border-radius: 10px; display: block; box-sizing: border-box">
+    <view class='box'
+      style="position: relative; bottom: 400px; background: #9ccd7a; height: 223rpx; width: 660rpx; left: 46rpx; top: -819rpx; border-radius: 10px; display: block; box-sizing: border-box">
       <view style="margin-top:10px">
-        <input style="margin-left: 45PX; width: 500rpx; height: 86rpx; box-sizing: border-box; background: whitesmoke; padding-left: 10px; border-radius: 10px"  class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
+        <input
+          style="margin-left: 45PX; width: 500rpx; height: 86rpx; box-sizing: border-box; background: whitesmoke; padding-left: 10px; border-radius: 10px"
+          class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
       </view>
-      <button type="primary" size="mini" bindtap="comfirm_comment" style="position: relative; left: 145rpx; top: 58rpx">确定</button>
-      <button type="primary" size="mini" bindtap="cancel_comment" style="position: relative; left: 294rpx; top: 58rpx">取消</button>
+      <button type="primary" size="mini" bindtap="comfirm_comment"
+        style="position: relative; left: 145rpx; top: 58rpx">确定</button>
+      <button type="primary" size="mini" bindtap="cancel_comment"
+        style="position: relative; left: 294rpx; top: 58rpx">取消</button>
       <!-- <button type="primary"  bindtap="comfirm_comment" style="position: relative; left: -125rpx; top: 80rpx; width: 136rpx; height: 40rpx; display: block; box-sizing: border-box">确定</button> -->
       <!-- <button type="primary" bindtap="cancel_comment" style="position: relative; left: 98rpx; top: 40rpx; width: 135rpx; height: 40rpx; display: block; box-sizing: border-box">取消</button> -->
     </view>
   </block>
-
 </view>

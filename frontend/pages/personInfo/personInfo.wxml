@@ -14,7 +14,7 @@
     </view>
 
 
-    <view class="Mine">
+    <view class="Mine" wx:if="{{avatarUrl}}">
         <navigator class="Trans" url="/pages/favorite/favorite">
             <view>我的收藏</view>
             <image class="Instru" src="/images/favorite.png"></image>

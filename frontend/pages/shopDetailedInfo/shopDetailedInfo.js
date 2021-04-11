@@ -5,6 +5,7 @@ Page({
   data: {
     shop_id: '', // 商店的shop_id
     shop_detail: '', // 商店的详细信息
+    shop_announcements: [], // 商店公告
     ddl_product: [], // 商店的临期商品列表
     shop_comment: [], // 商店的评论列表
     comment_input_show: false,
@@ -19,10 +20,10 @@ Page({
     })
     console.log(that.data.shop_id)
     // 获取商店详细信息
-    this.get_shop_detail(that.data.shop_id, this.get_ddl_products, this.get_shop_comment);
-
+    this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment);
   },
-  get_shop_detail(shop_id, ddl_product_callback, shop_comment_callback) {
+
+  get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback) {
     api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
       console.log('shop_detail', res)
       this.setData({
@@ -31,10 +32,27 @@ Page({
     }).catch(err => {
       console.log(err)
     });
+    // 获取公告
+    get_announcement_callback(shop_id)
     // 获取临期食品
     ddl_product_callback(shop_id);
     // 获取商店评论
     shop_comment_callback(shop_id);
+  },
+  get_announcement(shop_id) {
+    api.post('/announcement/query', {
+      "page_num": 1,
+      "page_size": 100000,
+      "shop_id": shop_id
+    }).then(res => {
+      console.log("gonggao", res)
+      this.setData({
+        shop_announcements: res.shop_announcements[0]
+      })
+      console.log(this.data.shop_announcements)
+    }).catch(err => {
+      console.log(err);
+    })
   },
   get_ddl_products(shop_id) {
     api.post('/ddlproduct/query', {
@@ -65,16 +83,24 @@ Page({
   comment() {
     // 评论
     // 如果没有token，就跳转到登录页面
-    // if(!app.globalData.token){
-    //   wx.switchTab({
-    //     url: '../personInfo/personInfo',
-    //   })
-    // }
-    // else{
+    if (!app.globalData.token) {
+      wx.showModal({
+        title: '暂未登录',
+        content: '是否登录',
+        success (res) {
+          if (res.confirm) {
+          wx.switchTab({
+            url: '../personInfo/personInfo',
+          })
+          } else if (res.cancel) {
+          }
+        }
+      })
+    } else {
       this.setData({
         comment_input_show: true
       })
-    // }
+    }
   },
   comment_input(e) {
     // 接收输入框的输入
@@ -133,7 +159,6 @@ Page({
       }
     }
   },
-
   tapMove() {
     this.setData({
       scrollTop: this.data.scrollTop + 10

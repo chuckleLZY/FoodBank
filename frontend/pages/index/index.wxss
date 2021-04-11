@@ -58,12 +58,9 @@
   /* display: inline; */
 }
 
-/* .innerItemTest { */
-  /* padding-left: 80px; */
-  /* margin-top: -80px; */
-    /* float: left; */
-    /* display: inline; */
-/* } */
+.innerItemTest{
+  padding-top: 12px;
+}
 
 .my_scroll-view_H{
   white-space: nowrap;

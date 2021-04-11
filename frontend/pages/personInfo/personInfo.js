@@ -11,7 +11,6 @@ Page({
     avatarUrl: ""
   },
   showUserInfoTap: function () {
-
     // 授权
     wx.getUserProfile({
       desc: '快把信息给我', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
@@ -35,9 +34,9 @@ Page({
               method: "POST",
               success(res) {
                 // console.log(res.header)
-                // console.log("loginSuccess，token is ", res.header["token"]);
                 // 成功后在app.globalData里面记录下token
                 app.globalData.token = res.header["token"];
+                console.log("loginSuccess，token is ", app.globalData.token);
               },
               fail(error) {
                 console.log("loginError", error);
@@ -50,7 +49,6 @@ Page({
         console.log('getUserProfileFail', res);
       }
     })
-
   },
 
   /**

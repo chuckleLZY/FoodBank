@@ -87,11 +87,65 @@ Page({
     })
     console.log(this.data.markers)
   },
-
   bindtap(e) {
     console.log("bindtap", e);
     // console.log(this.data.latitude, this.data.longitude)
     this.mpCtx.moveToLocation();
+  },
+  get_all() {
+    api.post('/shopinfo/getbrief', {
+      // 这里的pagesize设为无限大？
+      "page_num": 1,
+      "page_size": 100000
+    }).then(res => {
+      this.setData({
+        total_shop_briefinfo_items: res.shop_briefinfo_items,
+      })
+      var temp_shop_briefinfo_items_that_shows_on_the_screen = []
+      for (var i in this.data.total_shop_briefinfo_items) {
+        temp_shop_briefinfo_items_that_shows_on_the_screen.push(this.data.total_shop_briefinfo_items[i])
+      }
+      this.setData({
+        shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen
+      })
+      this.setMarkers();
+    }).catch(err => {
+      console.log(err);
+    })
+  },
+  get_brief_by_type(shop_type) {
+    api.post('/shopinfo/getbriefbytype', {
+      // 这里的pagesize设为无限大？
+      "page_num": 1,
+      "page_size": 100000,
+      "shop_type": shop_type
+    }).then(res => {
+      this.setData({
+        total_shop_briefinfo_items: res.shop_briefinfo_items,
+      })
+      var temp_shop_briefinfo_items_that_shows_on_the_screen = []
+      for (var i in this.data.total_shop_briefinfo_items) {
+        temp_shop_briefinfo_items_that_shows_on_the_screen.push(this.data.total_shop_briefinfo_items[i])
+      }
+      this.setData({
+        shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen
+      })
+      this.setMarkers();
+    }).catch(err => {
+      console.log(err);
+    })
+  },
+  get_clothing() {
+    this.get_brief_by_type("clothing");
+  },
+  get_food() {
+    this.get_brief_by_type("food");
+  },
+  get_housing() {
+    this.get_brief_by_type("housing");
+  },
+  get_transportation(){
+    this.get_brief_by_type("transportation");
   },
   to_shop_detail(e) {
     console.log(e.currentTarget.dataset.shop_id); //这玩意是shop_id
@@ -113,12 +167,10 @@ Page({
       url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + this.data.markers[e.detail.markerId].desc,
     })
   },
-
   changePosition() {
     //改变map上层的信息层的位置与高度
     console.log("changePosition", this.data.upperViewHeight, this.data.heightRange);
     if (!this.data.flag) {
-      console.log("here111");
       var animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
@@ -131,9 +183,7 @@ Page({
         this.setData({
           upperViewHeight: this.data.upperViewHeight + this.data.heightRange,
         })
-
     } else {
-      console.log("here222");
       var animation = wx.createAnimation({
         duration: 500,
         timingFunction: 'ease',
@@ -180,5 +230,4 @@ Page({
       scrollTop: this.data.scrollTop + 10
     })
   },
-
 })
