@@ -26,7 +26,7 @@ const host = "https://www.lohas.ink/api";
 const request = (url, options) => {
   // console.log('url',url,'option',options);
   return new Promise((resolve, reject) => {
-    console.log("request", app.globalData.token, url, options)
+    // console.log("request", app.globalData.token, url, options)
     wx.request({
       url: `${host}${url}`,
       method: options.method,
@@ -41,7 +41,7 @@ const request = (url, options) => {
         //  } else {
         //      reject(request.data)
         //  }
-        console.log("request success")
+        // console.log("request success")
         resolve(request.data)
       },
       fail(error) {
@@ -53,7 +53,7 @@ const request = (url, options) => {
 }
 
 const get = (url, options = {}) => {
-  console.log("here get")
+  // console.log("here get")
   return request(url, {
     method: 'GET',
     data: options
@@ -61,7 +61,7 @@ const get = (url, options = {}) => {
 }
 
 const post = (url, options) => {
-  console.log("here post")
+  // console.log("here post")
   return request(url, {
     method: 'POST',
     data: options
@@ -69,7 +69,7 @@ const post = (url, options) => {
 }
 
 const put = (url, options) => {
-  console.log("here put")
+  // console.log("here put")
   return request(url, {
     method: 'PUT',
     data: options
@@ -78,7 +78,7 @@ const put = (url, options) => {
 
 // 不能声明DELETE（关键字）
 const remove = (url, options) => {
-  console.log("here delete(remove)")
+  // console.log("here delete(remove)")
   return request(url, {
     method: 'DELETE',
     data: options

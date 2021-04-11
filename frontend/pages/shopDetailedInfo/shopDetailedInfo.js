@@ -10,6 +10,7 @@ Page({
     shop_comment: [], // 商店的评论列表
     comment_text: '',
     modalHidden: true, // 评论输入框是否隐藏
+    is_collected: false // 是否收藏了
   },
   onLoad: function (options) {
     var that = this
@@ -23,14 +24,38 @@ Page({
     this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment);
   },
   get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback) {
-    api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
-      console.log('shop_detail', res)
-      this.setData({
-        shop_detail: res
-      })
-    }).catch(err => {
-      console.log(err)
-    });
+    // 还没有登录
+    if (!app.globalData.token) {
+      api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
+        console.log('shop_detail', res)
+        this.setData({
+          shop_detail: res
+        })
+      }).catch(err => {
+        console.log(err)
+      });
+    } else {
+      api.post("/shopinfo/getdetailedwithcollect", {
+        "page_num": 1,
+        "page_size": 100000
+      }).then(res => {
+        console.log('shop_detail', res)
+        for (var i in res.shop_briefinfo_items) {
+          if (res.shop_briefinfo_items[i].shop_id == this.data.shop_id) {
+            this.setData({
+              shop_detail: res.shop_briefinfo_items[i],
+              is_collected: res.shop_briefinfo_items[i].is_collected == 1 ? true : false
+            })
+          }
+        }
+
+        console.log("is_collected", this.data.is_collected)
+
+      }).catch(err => {
+        console.log(err)
+      });
+    }
+
     // 获取公告
     get_announcement_callback(shop_id)
     // 获取临期食品
@@ -139,6 +164,46 @@ Page({
     //取消评论
     this.setData({
       modalHidden: true
+    })
+  },
+  add_collect(){
+    // 如果没有token，就跳转到登录页面
+    if (!app.globalData.token) {
+      wx.showModal({
+        title: '暂未登录',
+        content: '是否登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../personInfo/personInfo',
+            })
+          } else if (res.cancel) {}
+        }
+      })
+    } else {
+      // 添加收藏
+      api.post('/collect/add', {
+        "shop_id": this.data.shop_id,
+      }).then(res => {
+        console.log(res);
+        this.setData({
+          is_collected:true
+        })
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+  },
+  cancel_collect(){
+    api.post('/collect/delete', {
+      "shop_id": this.data.shop_id,
+    }).then(res => {
+      console.log(res);
+      this.setData({
+        is_collected:false
+      })
+    }).catch(err => {
+      console.log(err);
     })
   },
   upper(e) {

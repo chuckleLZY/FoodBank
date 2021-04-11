@@ -9,7 +9,8 @@
     </view>
     <!-- 这里是收藏的图标 -->
     <view class="favorite_image_view">
-      <image class="favorite_image" src="/images/favorite.png"></image>
+      <image class="favorite_image" src="/images/favorite.png"  wx:if="{{!is_collected}}" bindtap="add_collect"></image>
+      <image class="favorite_image" src="/images/favorite2.png"  wx:if="{{is_collected}}" bindtap="cancel_collect"></image>
     </view>
     <view style="padding-left:10px; padding-right:10px">
       <view>
