@@ -12,15 +12,15 @@
   <!-- 衣食住行选项 -->
   <scroll-view class="my_scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini" bindtap="get_all"
-      style="background:#FFFFFF;border-radius:20px;width:60px">全部</button></view>
+        style="background:#FFFFFF;border-radius:20px;width:60px">全部</button></view>
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini" bindtap="get_clothing"
         style="background:#FFFFFF;border-radius:20px;width:60px">衣</button></view>
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini" bindtap="get_food"
-      style="background:#FFFFFF;border-radius:20px;width:60px">食</button></view>
-    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"  bindtap="get_housing"
-      style="background:#FFFFFF;border-radius:20px;width:60px">住</button></view>
-    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini" bindtap="get_transportation"
-      style="background:#FFFFFF;border-radius:20px;width:60px">行</button></view>
+        style="background:#FFFFFF;border-radius:20px;width:60px">食</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini" bindtap="get_housing"
+        style="background:#FFFFFF;border-radius:20px;width:60px">住</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" size="mini"
+        bindtap="get_transportation" style="background:#FFFFFF;border-radius:20px;width:60px">行</button></view>
   </scroll-view>
   <!-- 改变上层信息层的按钮 -->
   <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
@@ -39,7 +39,7 @@
               <image class="innerItemCover" src="{{item.avatar}}"></image>
               <view class="innerItemTest">
                 <view style="font-size:20px">{{item.shop_name}}</view>
-              <view style="font-size:18px">{{item.shop_lohas_info}}</view>
+                <view style="font-size:18px">{{item.shop_lohas_info}}</view>
               </view>
 
             </view>

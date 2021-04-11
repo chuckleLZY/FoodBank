@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-card": "../../vantdist/card/index",
-    "van-swipe-cell": "../../vantdist/swipe-cell/index"
+    "van-swipe-cell": "../../vantdist/swipe-cell/index",
+    "van-divider": "../../vantdist/divider/index"
   }
 }

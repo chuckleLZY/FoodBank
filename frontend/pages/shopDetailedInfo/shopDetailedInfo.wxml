@@ -49,9 +49,10 @@
         </navigator>
       </view>
       <!-- 这里是评论列表 -->
-      <view style="margin-top:20px; font-size:25px; ">评论</view>
+      <view style="margin-top:20px; margin-bottom:20px; font-size:25px; ">评论</view>
       <view wx:for="{{shop_comment}}" data-index="{{index}}">
         <view class="innerItemTest">{{item.content}}</view>
+        <van-divider />
       </view>
     </view>
     <view>
