@@ -9,23 +9,27 @@
     </view>
     <!-- 这里是收藏的图标 -->
     <view class="favorite_image_view">
-      <image class="favorite_image" src="/images/favorite.png"  wx:if="{{!is_collected}}" bindtap="add_collect"></image>
-      <image class="favorite_image" src="/images/favorite2.png"  wx:if="{{is_collected}}" bindtap="cancel_collect"></image>
+      <image class="favorite_image" src="/images/favorite.png" wx:if="{{!is_collected}}" bindtap="add_collect"></image>
+      <image class="favorite_image" src="/images/favorite2.png" wx:if="{{is_collected}}" bindtap="cancel_collect">
+      </image>
     </view>
     <view style="padding-left:10px; padding-right:10px">
       <view>
         <!-- 下面几行是商店详细信息 -->
         <view style="margin-top:15px; font-size:25px; font-weight:bold; ">{{shop_detail.shop_name}}</view>
         <view style="font-size:20px; ">shop_intro:{{shop_detail.shop_intro}}</view>
-        <view style="margin-top:20px; font-size:20px; ">营业时间:{{shop_detail.shop_business_hours}}</view>
-        <!-- 这玩意模拟横线 -->
-        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
-        <view style="margin-top:15px; font-size:20px; ">地址:{{shop_detail.shop_address}}</view>
-        <!-- 这玩意模拟横线 -->
-        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
-        <view style="margin-top:20px; font-size:20px; ">公告:{{shop_announcements.content}}</view>
-        <!-- 这玩意模拟横线 -->
-        <view style=" background: blueviolet; width: 100%; height: 2px; margin-top:3px; border-radius: 50px; "></view>
+        <view style="margin-top:20px; font-size:20px; ">营业时间 : {{shop_detail.shop_business_hours}}</view>
+        <!-- 横线 -->
+        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
+        </van-divider>
+        <view style="margin-top:15px; font-size:20px; ">地址 : {{shop_detail.shop_address}}</view>
+        <!-- 横线 -->
+        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
+        </van-divider>
+        <view style="margin-top:20px; font-size:20px; ">公告 : {{shop_announcements.content}}</view>
+        <!-- 横线 -->
+        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
+        </van-divider>
         <view style="margin-top:30px; font-size:25px; ">情报</view>
         <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
           {{shop_detail.shop_lohas_info}}</view>
@@ -35,7 +39,7 @@
       <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
         <navigator>
           <van-swipe-cell id="swipe-cell" left-width="{{ 65 }}" right-width="{{ 65 }}" name="{{item.product_id}}"
-            async-close bind:close="onClose">
+         >
             <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
               thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
               class="announcement-card">
