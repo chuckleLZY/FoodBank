@@ -8,8 +8,8 @@ Page({
     shop_announcements: [], // 商店公告
     ddl_product: [], // 商店的临期商品列表
     shop_comment: [], // 商店的评论列表
-    comment_input_show: false,
     comment_text: '',
+    modalHidden: true, // 评论输入框是否隐藏
   },
   onLoad: function (options) {
     var that = this
@@ -22,7 +22,6 @@ Page({
     // 获取商店详细信息
     this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment);
   },
-
   get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback) {
     api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
       console.log('shop_detail', res)
@@ -87,18 +86,17 @@ Page({
       wx.showModal({
         title: '暂未登录',
         content: '是否登录',
-        success (res) {
+        success(res) {
           if (res.confirm) {
-          wx.switchTab({
-            url: '../personInfo/personInfo',
-          })
-          } else if (res.cancel) {
-          }
+            wx.switchTab({
+              url: '../personInfo/personInfo',
+            })
+          } else if (res.cancel) {}
         }
       })
     } else {
       this.setData({
-        comment_input_show: true
+        modalHidden: false
       })
     }
   },
@@ -111,23 +109,33 @@ Page({
   },
   comfirm_comment(e) {
     // 确定评论
-    // console.log("comfirm", this.data.comment_text)
+    console.log("comfirm", this.data.comment_text)
     api.post('/comment/create', {
       "content": this.data.comment_text,
       "shop_id": this.data.shop_id,
     }).then(res => {
       console.log(res);
+      wx.showToast({
+        title: '添加成功',
+        icon: 'success',
+        duration: 1000
+      })
     }).catch(err => {
       console.log(err);
+      wx.showToast({
+        title: '添加失败',
+        icon: 'fail',
+        duration: 1000
+      })
     })
     this.setData({
-      comment_input_show: false
+      modalHidden: true
     })
   },
   cancel_comment() {
     //取消评论
     this.setData({
-      comment_input_show: false
+      modalHidden: true
     })
   },
   upper(e) {
