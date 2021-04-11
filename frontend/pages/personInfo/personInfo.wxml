@@ -2,13 +2,13 @@
 <view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box" >
     <view class="flex-container">
 
-        <button wx:if="{{!avatarUrl}}" class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap" >未登录</button>
-        <view class="UserHeadImage" >
-            <image wx:if="{{avatarUrl}}" src='{{avatarUrl}}' />
+        <button wx:if="{{!avatarUrl}}" class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap"  >未登录</button>
+        <view class="UserHeadImage" wx:if="{{avatarUrl}}"  >
+            <image src='{{avatarUrl}}' />
         </view>
-        <view class="UserName" >
-            <view wx:if="{{nickName}}" class='user-name' >{{nickName}}</view>
-            <view wx:if="{{nickName}}" class="PersonalitySignature">用户可自定义个性签名(限制字数）</view>
+        <view class="UserName"  wx:if="{{nickName}}" >
+            <view class='user-name' >{{nickName}}</view>
+            <!-- <view class="PersonalitySignature">用户可自定义个性签名(限制字数）</view> -->
         </view>
         
     </view>
@@ -32,8 +32,8 @@
             <image class="Instru" src=""></image>
         </navigator>
     </view>
-    <i-button bind:click="handleClick" i type="success" size="large" shape="circle">商家登陆</i-button>
+    <!-- <i-button bind:click="handleClick" i type="success" size="large" shape="circle">商家登陆</i-button>
 
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> ？？？</button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> ？？？</button> -->
 </view>
 

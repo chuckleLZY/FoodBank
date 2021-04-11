@@ -166,7 +166,7 @@ Page({
       modalHidden: true
     })
   },
-  add_collect(){
+  add_collect() {
     // 如果没有token，就跳转到登录页面
     if (!app.globalData.token) {
       wx.showModal({
@@ -187,20 +187,20 @@ Page({
       }).then(res => {
         console.log(res);
         this.setData({
-          is_collected:true
+          is_collected: true
         })
       }).catch(err => {
         console.log(err);
       })
     }
   },
-  cancel_collect(){
+  cancel_collect() {
     api.post('/collect/delete', {
       "shop_id": this.data.shop_id,
     }).then(res => {
       console.log(res);
       this.setData({
-        is_collected:false
+        is_collected: false
       })
     }).catch(err => {
       console.log(err);
