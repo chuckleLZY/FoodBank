@@ -1,8 +1,9 @@
 <!--pages/first/first.wxml-->
 <view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box" >
     <view class="flex-container">
-
-        <button wx:if="{{!avatarUrl}}" class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap"  >未登录</button>
+    <view wx:if="{{!avatarUrl}}" style="margin-top:20px;margin-bottom:20px;width:100%;text-align:center">
+        <button  class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap"  >未登录</button>
+    </view>
         <view class="UserHeadImage" wx:if="{{avatarUrl}}"  >
             <image src='{{avatarUrl}}' />
         </view>
@@ -10,13 +11,11 @@
             <view class='user-name' >{{nickName}}</view>
             <!-- <view class="PersonalitySignature">用户可自定义个性签名(限制字数）</view> -->
         </view>
-        
     </view>
-
 
     <view class="Mine" wx:if="{{avatarUrl}}">
         <navigator class="Trans" url="/pages/favorite/favorite">
-            <view>我的收藏</view>
+            <view >我的收藏</view>
             <image class="Instru" src="/images/favorite.png"></image>
         </navigator>
         <navigator class="Trans" url="">

@@ -88,12 +88,16 @@
 
 .Trans {
     display: flex;
-    /* margin-top: 50rpx; */
-    /* margin-bottom: 50rpx; */
+    padding-top: 25px;
+    padding-bottom: 25px;
+    /* height: 60px; */
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 .Instru {
-    margin-left: 500rpx;
+    margin-left: 400rpx;
+    margin-top: -7px;
     width: 60rpx; 
     height: 60rpx;
 }

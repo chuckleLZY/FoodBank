@@ -17,7 +17,7 @@
       <view>
         <!-- 下面几行是商店详细信息 -->
         <view style="margin-top:15px; font-size:25px; font-weight:bold; ">{{shop_detail.shop_name}}</view>
-        <view style="font-size:20px; ">shop_intro:{{shop_detail.shop_intro}}</view>
+        <view style="font-size:20px; ">{{shop_detail.shop_intro}}</view>
         <view style="margin-top:20px; font-size:20px; ">营业时间 : {{shop_detail.shop_business_hours}}</view>
         <!-- 横线 -->
         <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
@@ -27,19 +27,19 @@
         <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
         </van-divider>
         <view style="margin-top:20px; font-size:20px; ">公告 : {{shop_announcements.content}}</view>
-        <!-- 横线 -->
-        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
-        </van-divider>
-        <view style="margin-top:30px; font-size:25px; ">情报</view>
-        <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
-          {{shop_detail.shop_lohas_info}}</view>
       </view>
+      <!-- 横线 -->
+      <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
+      </van-divider>
+      <view style="margin-top:30px; font-size:25px; ">情报</view>
+      <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
+        {{shop_detail.shop_lohas_info}}</view>
       <!-- 这里是临期商品列表 -->
       <view style="margin-top:20px; font-size:25px; ">列表</view>
       <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
         <navigator>
-          <van-swipe-cell id="swipe-cell" left-width="{{ 65 }}" right-width="{{ 65 }}" name="{{item.product_id}}"
-         >
+          <van-swipe-cell id="swipe-cell"  name="{{item.product_id}}"
+            async-close bind:close="onClose">
             <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
               thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
               class="announcement-card">
@@ -60,7 +60,7 @@
       </view>
     </view>
     <view>
-      <text>\n\n\n\n\n\n</text>
+      <text>\n\n\n\n\n</text>
     </view>
   </scroll-view>
   <!-- 评论按钮 底部固定 -->
