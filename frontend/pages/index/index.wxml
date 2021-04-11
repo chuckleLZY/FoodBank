@@ -41,7 +41,6 @@
                 <view style="font-size:20px">{{item.shop_name}}</view>
                 <!-- <view style="font-size:18px">{{item.shop_lohas_info}}</view> -->
               </view>
-
             </view>
           </view>
         </view>

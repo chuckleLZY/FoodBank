@@ -43,8 +43,9 @@
               thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
               class="announcement-card">
               <view slot="footer">
-                <label>发布日期：{{item.product_pubdate}}</label>
+                <!-- <label>发布日期：{{item.product_pubdate}}</label> -->
                 <label>生产日期：{{item.production_date}}</label>
+                <text>\n</text>
                 <label>过期日期：{{item.expiry_date}}</label>
               </view>
             </van-card>
