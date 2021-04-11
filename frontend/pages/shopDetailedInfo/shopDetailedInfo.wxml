@@ -37,7 +37,6 @@
       <!-- 这里是临期商品列表 -->
       <view style="margin-top:20px; font-size:25px; ">列表</view>
       <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
-        <navigator>
           <van-swipe-cell id="swipe-cell"  name="{{item.product_id}}"
             async-close bind:close="onClose">
             <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
@@ -50,7 +49,6 @@
               </view>
             </van-card>
           </van-swipe-cell>
-        </navigator>
       </view>
       <!-- 这里是评论列表 -->
       <view style="margin-top:20px; margin-bottom:20px; font-size:25px; ">评论</view>
