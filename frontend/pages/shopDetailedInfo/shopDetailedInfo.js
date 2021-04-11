@@ -84,6 +84,14 @@ Page({
       "page_size": 100000,
       "shop_id": shop_id
     }).then(res => {
+      for (var i in res.ddlproduct_item_list) {
+        var production_date = new Date(res.ddlproduct_item_list[i].production_date)
+        var expiry_date = new Date(res.ddlproduct_item_list[i].expiry_date)
+        res.ddlproduct_item_list[i].production_date = production_date.getFullYear() + '-' + (production_date.getMonth() + 1 < 10 ? '0' + (production_date.getMonth() + 1) : production_date.getMonth() + 1) + '-' + production_date.getDate();
+        res.ddlproduct_item_list[i].expiry_date = expiry_date.getFullYear() + '-' + (expiry_date.getMonth() + 1 < 10 ? '0' + (expiry_date.getMonth() + 1) : expiry_date.getMonth() + 1) + '-' + expiry_date.getDate();
+        console.log("res.ddlproduct_item_list[i].production_date", res.ddlproduct_item_list[i].production_date)
+        console.log("res.ddlproduct_item_list[i].expiry_date", res.ddlproduct_item_list[i].expiry_date)
+      }
       this.setData({
         ddl_product: res.ddlproduct_item_list
       })
