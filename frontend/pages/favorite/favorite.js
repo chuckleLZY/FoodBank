@@ -14,6 +14,7 @@ Page({
         food_collect: [], // 食
         housing_collect: [], // 住
         transportation_collect: [], // 行
+        show_on_the_screen_collect: [], // 现实在屏幕上的收藏
         current: 'tab1',
         current_scroll: 'tab1',
         visible2: false,
@@ -48,6 +49,28 @@ Page({
         this.setData({
             current: detail.key
         });
+        if (this.data.current == "all") {
+            this.setData({
+                show_on_the_screen_collect: this.data.all_collect
+            });
+        } else if (this.data.current == "clothing") {
+            this.setData({
+                show_on_the_screen_collect: this.data.clothing_collect
+            });
+        } else if (this.data.current == "food") {
+            this.setData({
+                show_on_the_screen_collect: this.data.food_collect
+            });
+        } else if (this.data.current == "housing") {
+            this.setData({
+                show_on_the_screen_collect: this.data.housing_collect
+            });
+        } else if (this.data.current == "transportation") {
+            this.setData({
+                show_on_the_screen_collect: this.data.transportation_collect
+            });
+        }
+        console.log('handleChange', this.data.current)
     },
 
     handleChangeScroll({
@@ -56,6 +79,7 @@ Page({
         this.setData({
             current_scroll: detail.key
         });
+        console.log('handleChangeScroll')
     },
     handleCancel2() {
         this.setData({
@@ -121,10 +145,11 @@ Page({
             };
             this.setData({
                 all_collect: all_collect,
-                clothing_collect:clothing_collect,
-                food_collect:food_collect,
-                housing_collect:housing_collect,
-                transportation_collect:transportation_collect
+                clothing_collect: clothing_collect,
+                food_collect: food_collect,
+                housing_collect: housing_collect,
+                transportation_collect: transportation_collect,
+                show_on_the_screen_collect: all_collect //刚开始所有都显示
             });
             // console.log("all_collect", this.data.all_collect)
             // console.log("clothing_collect", this.data.clothing_collect)

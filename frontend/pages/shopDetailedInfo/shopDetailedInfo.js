@@ -119,7 +119,10 @@ Page({
         title: '添加成功',
         icon: 'success',
         duration: 1000
-      })
+      });
+      this.onLoad({
+        shop_id: this.data.shop_id
+      });
     }).catch(err => {
       console.log(err);
       wx.showToast({
@@ -172,5 +175,4 @@ Page({
       scrollTop: this.data.scrollTop + 10
     })
   }
-
 })

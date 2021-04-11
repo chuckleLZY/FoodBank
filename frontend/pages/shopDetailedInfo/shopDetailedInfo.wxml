@@ -29,7 +29,6 @@
         <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
           {{shop_detail.shop_lohas_info}}</view>
       </view>
-
       <!-- 这里是临期商品列表 -->
       <view style="margin-top:20px; font-size:25px; ">列表</view>
       <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
@@ -54,14 +53,17 @@
         <view class="innerItemTest">{{item.content}}</view>
       </view>
     </view>
+    <view>
+      <text>\n\n\n\n\n\n</text>
+    </view>
   </scroll-view>
   <!-- 评论按钮 底部固定 -->
   <view class="page__hd" style="position:fixed; bottom:50px">
     <button type="primary" bindtap="comment" style="position: relative; left: 198rpx; top: -24rpx；">评论</button>
   </view>
   <!-- 评论输入框 -->
-  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" hidden="{{modalHidden}}" bindconfirm="comfirm_comment"
-    bindcancel="cancel_comment">
-    <input class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input"  />
+  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" hidden="{{modalHidden}}"
+    bindconfirm="comfirm_comment" bindcancel="cancel_comment">
+    <input class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
   </modal>
 </view>

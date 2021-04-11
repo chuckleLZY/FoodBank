@@ -1,13 +1,31 @@
 <!--pages/favorite.wxml-->
 <view>
     <i-tabs current="{{ current }}" color="#9ccd7a" bindchange="handleChange">
-    <i-tab key="tab1" title="衣"></i-tab>
-    <i-tab key="tab2" title="食"></i-tab>
-    <i-tab key="tab3" title="住"></i-tab>
-    <i-tab key="tab4" title="行"></i-tab>
-    <i-tab key="tab5" title="玩"></i-tab>
+    <i-tab key="all" title="全部"></i-tab>
+    <i-tab key="clothing" title="衣"></i-tab>
+    <i-tab key="food" title="食"></i-tab>
+    <i-tab key="housing" title="住"></i-tab>
+    <i-tab key="transportation" title="行"></i-tab>
+    <i-tab key="play" title="玩"></i-tab>
 </i-tabs>
-    <view class="i-swipeout-demo">
+<view  wx:for="{{show_on_the_screen_collect}}" wx:for-index="index" wx:for-item="item" wx:key="shop_id">
+    <i-swipeout  i-class="i-swipeout-demo-item" operateWidth="{{210}}">
+        <view slot="content">
+            <image src="{{item.avatar}}"></image>
+            <i-cell 
+                i-class="i-cell-padding" 
+                title="{{item.shop_name}}"
+                label="{{item.shop_lohas_info}}">
+            </i-cell>
+        </view>
+        <view slot="button" class="i-swipeout-demo-button-group">
+            <view class="i-swipeout-demo-button">点赞</view>
+            <view class="i-swipeout-demo-button">分享</view>
+            <view class="i-swipeout-demo-button">删除</view>
+        </view>
+    </i-swipeout>
+</view>
+    <!-- <view class="i-swipeout-demo">
         <i-swipeout  i-class="i-swipeout-demo-item" operateWidth="{{210}}">
         <view slot="content">
             <i-cell 
@@ -36,6 +54,6 @@
             <view class="i-swipeout-demo-button" style="width:60px"><i-icon size="32" type="delete_fill"></i-icon></view>
         </view>
     </i-swipeout>
-    </view>
+    </view> -->
 
 </view>
