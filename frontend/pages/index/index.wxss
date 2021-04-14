@@ -59,12 +59,12 @@
 }
 
 .innerItemTest{
-  padding-top: 12px;
+  padding-top: 15px;
 }
 
 .my_scroll-view_H{
   white-space: nowrap;
-  height: 45px;
+  height: 55px;
 }
 
 .my_scroll-view-item_H{
