@@ -67,7 +67,7 @@
     <button type="primary" bindtap="comment" style="position: relative; left: 198rpx; top: -24rpx；">评论</button>
   </view>
   <!-- 评论输入框 -->
-  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" hidden="{{modalHidden}}"
+  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" wx:if="{{!modalHidden}}"
     bindconfirm="comfirm_comment" bindcancel="cancel_comment">
     <input class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
   </modal>
