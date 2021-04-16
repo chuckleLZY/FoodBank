@@ -214,6 +214,20 @@ Page({
       console.log(err);
     })
   },
+  get_route() {
+    // 路线导航
+    // let plugin = requirePlugin('routePlan');
+    let key = 'GQZBZ-7GZK2-GJPUE-CKJ65-IIJGH-6QFGG'; //使用在腾讯位置服务申请的key
+    let referer = 'LOHAS'; //调用插件的app的名称
+    let endPoint = JSON.stringify({ //终点
+      'name': this.data.shop_detail.shop_name,
+      'latitude': this.data.shop_detail.shop_latitude,
+      'longitude': this.data.shop_detail.shop_longitude
+    });
+    wx.navigateTo({
+      url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
+    });
+  },
   upper(e) {
     console.log(e)
   },

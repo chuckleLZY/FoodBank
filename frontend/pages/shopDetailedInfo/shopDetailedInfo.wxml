@@ -33,11 +33,17 @@
       </view>
       <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
       </van-divider>
-      <view>
-        <view style="font-size:15px; font-weight:500;color:#424242;padding-top:3px">{{shop_detail.shop_address}}</view>
-
-        <van-divider customStyle="color: #ffffff; border-color: #ffffff; font-size: 18px;"></van-divider>
+      <view style="height:40px">
+        <view style="float:left;padding-top:3px">
+          <view style="font-size:15px; font-weight:500;color:#424242;padding-top:3px">{{shop_detail.shop_address}}
+          </view>
+        </view>
+        <view style="float:right;padding-right:22px" bindtap="get_route" >
+          <image src="../../images/route.png" style="height:30px;width:30px;"></image>
+          <!-- <view style="font-size:10px; font-weight:300;color:#a6a6a6;padding-top:5px">地图/导航</view> -->
+        </view>
       </view>
+      <van-divider customStyle="color: #ffffff; border-color: #ffffff; font-size: 18px;"></van-divider>
     </view>
   </view>
 
@@ -48,7 +54,6 @@
         {{shop_announcements.content}}
       </view>
     </view>
-
   </view>
 
   <view class="my_card">
@@ -58,7 +63,7 @@
   </view>
 
   <view class="my_card">
-    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">列表</view>
+    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">商品</view>
     <view style="padding-bottom:15px">
       <view class="menu_item" style="padding-top:8px" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item"
         wx:key="ddl_product_id">

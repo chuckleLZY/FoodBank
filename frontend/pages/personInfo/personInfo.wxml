@@ -26,10 +26,10 @@
             <view>投诉建议</view>
             <image class="Instru" src=""></image>
         </navigator>
-        <navigator class="Trans" url="">
+        <!-- <navigator class="Trans" url="">
             <view>商家登录</view>
             <image class="Instru" src=""></image>
-        </navigator>
+        </navigator> -->
     </view>
     <!-- <i-button bind:click="handleClick" i type="success" size="large" shape="circle">商家登陆</i-button>
 

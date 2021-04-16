@@ -42,7 +42,7 @@
               <image class="innerItemCover" src="{{item.avatar}}"></image>
               <view class="innerItemTest">
                 <view style="font-size:20px">{{item.shop_name}}</view>
-                <view style="font-size:15px">{{item.shop_lohas_info}}</view>
+                <view style="font-size:15px; font-weight:300;color:#646464;padding-top:5px">{{item.shop_lohas_info}}</view>
               </view>
             </view>
           </view>
