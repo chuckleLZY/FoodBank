@@ -13,14 +13,17 @@
   <scroll-view class="my_scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_all"
         style="background:{{all_background}};border-radius:20px;width:90px;color:{{all_color}}">全部</button></view>
-    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default"  bindtap="get_clothing"
-        style="background:{{clothing_background}};border-radius:20px;width:90px;color:{{clothing_color}}">衣</button></view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_clothing"
+        style="background:{{clothing_background}};border-radius:20px;width:90px;color:{{clothing_color}}">衣</button>
+    </view>
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_food"
         style="background:{{food_background}};border-radius:20px;width:90px;color:{{food_color}}">食</button></view>
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_housing"
-        style="background:{{housing_background}};border-radius:20px;width:90px;color:{{housing_color}}">住</button></view>
-    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default"
-        bindtap="get_transportation" style="background{{transportation_background}};border-radius:20px;width:90px;color:{{transportation_color}}">行</button></view>
+        style="background:{{housing_background}};border-radius:20px;width:90px;color:{{housing_color}}">住</button>
+    </view>
+    <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_transportation"
+        style="background{{transportation_background}};border-radius:20px;width:90px;color:{{transportation_color}}">行</button>
+    </view>
   </scroll-view>
   <!-- 改变上层信息层的按钮 -->
   <view style="height:20px;background:#9ccd7a;border-top-left-radius:10px;border-top-right-radius:10px">
@@ -45,6 +48,7 @@
           </view>
         </view>
       </view>
+      <text>\n</text>
     </scroll-view>
   </view>
 </view>

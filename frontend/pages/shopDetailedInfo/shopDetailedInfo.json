@@ -2,6 +2,8 @@
   "usingComponents": {
     "van-card": "../../vantdist/card/index",
     "van-swipe-cell": "../../vantdist/swipe-cell/index",
-    "van-divider": "../../vantdist/divider/index"
-  }
+    "van-divider": "../../vantdist/divider/index",
+    "van-tag": "../../vantdist/tag/index"
+  },
+  "navigationBarBackgroundColor": "#f7f7f7"
 }

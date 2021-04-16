@@ -1,74 +1,75 @@
-<view style="height:100%">
-  <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
-    scroll-top="{{scrollTop}}" style="height:100%">
+<view style="height:100%; padding-left:15px;padding-right:15px;background-color:#f7f7f7;">
+  <view class="my_top_card">
     <!-- 这里是商店的图片 -->
-    <image class="head_picture" src="{{shop_detail.head_picture}}"></image>
-    <!-- 这里是商店的圆形图标 -->
-    <view class="top_view">
-      <image class="avatar" src="{{shop_detail.avatar}}" mode="cover"></image>
-    </view>
-    <!-- 这里是收藏的图标 -->
-    <view class="favorite_image_view">
-      <image class="favorite_image" src="/images/favorite.png" wx:if="{{!is_collected}}" bindtap="add_collect"></image>
-      <image class="favorite_image" src="/images/favorite2.png" wx:if="{{is_collected}}" bindtap="cancel_collect">
-      </image>
-    </view>
-    <view style="padding-left:10px; padding-right:10px">
-      <view>
-        <!-- 下面几行是商店详细信息 -->
-        <view style="margin-top:15px; font-size:25px; font-weight:bold; ">{{shop_detail.shop_name}}</view>
-        <view style="font-size:20px; ">{{shop_detail.shop_intro}}</view>
-        <view style="margin-top:20px; font-size:20px; ">营业时间 : {{shop_detail.shop_business_hours}}</view>
-        <!-- 横线 -->
-        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
-        </van-divider>
-        <view style="margin-top:15px; font-size:20px; ">地址 : {{shop_detail.shop_address}}</view>
-        <!-- 横线 -->
-        <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
-        </van-divider>
-        <view style="margin-top:20px; font-size:20px; ">公告 : {{shop_announcements.content}}</view>
+    <image class="head_picture" src="{{shop_detail.head_picture}}"
+      style="width:100%;height:200px;border-top-left-radius:10px;border-top-right-radius:10px;"></image>
+    <view style="padding-left:15px;padding-right:15px;">
+      <view style="height:100px">
+        <view style="float:left">
+          <view style=" font-size:20px; ">{{shop_detail.shop_name}}</view>
+          <view style="font-size:15px; font-weight:300; font-color:#fafafa">{{shop_detail.shop_intro}}</view>
+        </view>
+        <view style="float:right;">
+          <image style="width:20px;height:20px" src="/images/favorite.png" bindtap="add_collect"></image>
+          <image style="width:20px;height:20px" src="/images/favorite2.png" wx:if="{{is_collected}}"
+            bindtap="cancel_collect">
+          </image>
+        </view>
       </view>
-      <!-- 横线 -->
-      <van-divider customStyle="color: #1989fa; border-color: #1989fa; font-size: 18px;">
+      <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
       </van-divider>
-      <view style="margin-top:30px; font-size:25px; ">情报</view>
-      <view style="margin-top:15px; font-size:20px; font-weight:lighter; ">
-        {{shop_detail.shop_lohas_info}}</view>
-      <!-- 这里是临期商品列表 -->
-      <view style="margin-top:20px; font-size:25px; ">列表</view>
-      <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
-          <van-swipe-cell id="swipe-cell"  name="{{item.product_id}}"
-            async-close bind:close="onClose">
-            <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
-              thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
-              class="announcement-card">
-              <view slot="footer">
-                <!-- <label>发布日期：{{item.product_pubdate}}</label> -->
-                <label>生产日期：{{item.production_date}}</label>
-                <text>\n</text>
-                <label>过期日期：{{item.expiry_date}}</label>
-              </view>
-            </van-card>
-          </van-swipe-cell>
+      <view>
+        <view>营业时间</view>
+        <view>{{shop_detail.shop_business_hours}}</view>
       </view>
-      <!-- 这里是评论列表 -->
-      <view style="margin-top:20px; margin-bottom:20px; font-size:25px; ">评论</view>
-      <view wx:for="{{shop_comment}}" data-index="{{index}}">
-        <view class="innerItemTest">{{item.content}}</view>
-        <van-divider />
+      <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
+      </van-divider>
+      <view>
+        <view>{{shop_detail.shop_address}}</view>
       </view>
+    </view>
+  </view>
+  <view class="my_card">
+    <view>
+      <view>公告 : {{shop_announcements.content}}</view>
+    </view>
+  </view>
+
+  <view class="my_card">
+    <view>情报</view>
+    <view>{{shop_detail.shop_lohas_info}}</view>
+  </view>
+
+  <view class="my_card">
+    <view>
+      列表
     </view>
     <view>
-      <text>\n\n\n\n\n</text>
+      <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
+        <van-swipe-cell id="swipe-cell" name="{{item.product_id}}" async-close bind:close="onClose">
+          <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
+            thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
+            class="announcement-card">
+            <view slot="footer">
+              <!-- <label>发布日期：{{item.product_pubdate}}</label> -->
+              <label>生产日期：{{item.production_date}}</label>
+              <text>\n</text>
+              <label>过期日期：{{item.expiry_date}}</label>
+            </view>
+          </van-card>
+        </van-swipe-cell>
+      </view>
     </view>
-  </scroll-view>
-  <!-- 评论按钮 底部固定 -->
-  <view class="page__hd" style="position:fixed; bottom:50px">
-    <button type="primary" bindtap="comment" style="position: relative; left: 198rpx; top: -24rpx；">评论</button>
   </view>
-  <!-- 评论输入框 -->
-  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" wx:if="{{!modalHidden}}"
-    bindconfirm="comfirm_comment" bindcancel="cancel_comment">
-    <input class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
-  </modal>
+
+  <view class="my_card">
+    <view>评论</view>
+    <view>
+      <view style="width:100%;display: flex;">
+        <view wx:for="{{shop_comment}}" data-index="{{index}}">
+          <van-tag plain round large type="primary">{{item.content}}</van-tag>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
