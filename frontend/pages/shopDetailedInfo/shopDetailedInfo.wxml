@@ -72,4 +72,14 @@
       </view>
     </view>
   </view>
+  <!-- 评论按钮 底部固定 -->
+  <view style="width:100%">
+    <button type="primary" bindtap="comment" style="width:100%;border-radius:5px;">评论</button>
+  </view>
+  <!-- 评论输入框 -->
+  <modal title="请输入评论内容" confirm-text="confirm" cancel-text="cancel" wx:if="{{!modalHidden}}"
+    bindconfirm="comfirm_comment" bindcancel="cancel_comment">
+    <input class="weui-input" maxlength="20" placeholder="最大输入长度为20" bindinput="comment_input" />
+  </modal>
+  <text>\n\n</text>
 </view>
