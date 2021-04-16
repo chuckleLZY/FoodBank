@@ -1,74 +1,96 @@
-<view style="height:100%; padding-left:15px;padding-right:15px;background-color:#f7f7f7;">
+<view style="padding-left:15px;padding-right:15px;background-color:#f7f7f7;">
   <view class="my_top_card">
     <!-- 这里是商店的图片 -->
     <image class="head_picture" src="{{shop_detail.head_picture}}"
       style="width:100%;height:200px;border-top-left-radius:10px;border-top-right-radius:10px;"></image>
-    <view style="padding-left:15px;padding-right:15px;">
-      <view style="height:100px">
+
+    <view style="padding-left:15px;padding-right:15px">
+      <view style="height:55px;padding-top:10px">
         <view style="float:left">
-          <view style=" font-size:20px; ">{{shop_detail.shop_name}}</view>
-          <view style="font-size:15px; font-weight:300; font-color:#fafafa">{{shop_detail.shop_intro}}</view>
+          <view style=" font-size:20px;">{{shop_detail.shop_name}}</view>
+          <view style="font-size:15px; font-weight:300;color:#a6a6a6;padding-top:5px">{{shop_detail.shop_intro}}</view>
         </view>
-        <view style="float:right;">
-          <image style="width:20px;height:20px" src="/images/favorite.png" bindtap="add_collect"></image>
-          <image style="width:20px;height:20px" src="/images/favorite2.png" wx:if="{{is_collected}}"
-            bindtap="cancel_collect">
-          </image>
+
+        <view style="float:right;width:80px">
+          <view class="my_border"></view>
+          <view style="float:right;width:50px">
+            <image style="width:24px;height:24px;padding-left:3px" src="/images/favorite.png" wx:if="{{!is_collected}}"
+              bindtap="add_collect"></image>
+            <image style="width:24px;height:24px;padding-left:3px" src="/images/favorite2.png" wx:if="{{is_collected}}"
+              bindtap="cancel_collect">
+            </image>
+            <view style="font-size:15px;font-weight:300;color:#a6a6a6;">收藏</view>
+          </view>
+        </view>
+
+      </view>
+      <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
+      </van-divider>
+      <view>
+        <view style="font-size:15px; font-weight:500;color:#424242;padding-top:2px">营业时间</view>
+        <view style="font-size:15px; font-weight:500;color:#424242;padding-top:3px">{{shop_detail.shop_business_hours}}
         </view>
       </view>
       <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
       </van-divider>
       <view>
-        <view>营业时间</view>
-        <view>{{shop_detail.shop_business_hours}}</view>
+        <view style="font-size:15px; font-weight:500;color:#424242;padding-top:3px">{{shop_detail.shop_address}}</view>
+
+        <van-divider customStyle="color: #ffffff; border-color: #ffffff; font-size: 18px;"></van-divider>
       </view>
-      <van-divider customStyle="color: #f0f0f0; border-color: #f0f0f0; font-size: 18px;">
-      </van-divider>
-      <view>
-        <view>{{shop_detail.shop_address}}</view>
-      </view>
-    </view>
-  </view>
-  <view class="my_card">
-    <view>
-      <view>公告 : {{shop_announcements.content}}</view>
     </view>
   </view>
 
   <view class="my_card">
-    <view>情报</view>
-    <view>{{shop_detail.shop_lohas_info}}</view>
+    <view style=";padding-top:10px;padding-bottom:10px;display:flex">
+      <image style="height:18px;width:72px;padding-top:2px" src="../../images/gonggao.jpg"></image>
+      <view style="font-size:15px;font-weight:500;color:#424242;padding-left:10px">
+        {{shop_announcements.content}}
+      </view>
+    </view>
+
   </view>
 
   <view class="my_card">
-    <view>
-      列表
-    </view>
-    <view>
-      <view class="menu_item" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item" wx:key="ddl_product_id">
-        <van-swipe-cell id="swipe-cell" name="{{item.product_id}}" async-close bind:close="onClose">
-          <van-card tag="{{item.discount}}" price="{{item.current_cost}}" origin-price="{{item.origin_cost}}"
-            thumb="{{item.product_pic}}" desc="{{item.product_intro}}" title="{{item.product_name}}"
-            class="announcement-card">
-            <view slot="footer">
-              <!-- <label>发布日期：{{item.product_pubdate}}</label> -->
-              <label>生产日期：{{item.production_date}}</label>
-              <text>\n</text>
-              <label>过期日期：{{item.expiry_date}}</label>
+    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px">情报</view>
+    <view style="font-size:15px; font-weight:300;color:#a6a6a6;padding-top:8px;padding-bottom:15px">
+      {{shop_detail.shop_lohas_info}}</view>
+  </view>
+
+  <view class="my_card">
+    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">列表</view>
+    <view style="padding-bottom:15px">
+      <view class="menu_item" style="padding-top:8px" wx:for="{{ddl_product}}" wx:for-index="index" wx:for-item="item"
+        wx:key="ddl_product_id">
+        <view style="background-color:#f5f5f5;border-radius:10px;">
+          <view style="padding:10px;display:flex">
+            <image src="{{item.product_pic}}" style="border-radius:10px;width:80px;height:80px"></image>
+            <view style="padding-left:10px">
+              <view>{{item.product_name}}</view>
+              <view style="font-size:13px; font-weight:300;color:#a6a6a6;padding-top:5px">
+                {{item.product_intro}}</view>
+              <view style="font-size:10px; font-weight:200;color:#a6a6a6;padding-top:5px">
+                生产日期：{{item.production_date}} 过期日期：{{item.expiry_date}}</view>
+              <view style="display:flex;padding-top:5px">
+                <view style="font-size:15px;color:red">￥{{item.current_cost}}</view>
+                <view
+                  style="font-size:10px;font-weight:300;color:#a6a6a6;padding-top:5px;padding-left:5px;text-decoration:line-through">
+                  ￥{{item.origin_cost}}</view>
+              </view>
             </view>
-          </van-card>
-        </van-swipe-cell>
+          </view>
+        </view>
+
       </view>
     </view>
   </view>
-
   <view class="my_card">
-    <view>评论</view>
-    <view>
-      <view style="width:100%;display: flex;">
-        <view wx:for="{{shop_comment}}" data-index="{{index}}">
-          <van-tag plain round large type="primary">{{item.content}}</van-tag>
-        </view>
+    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">评论</view>
+    <view style="width:100%;display:flex;flex-wrap:wrap;padding-bottom:8px">
+      <view wx:for="{{shop_comment}}" data-index="{{index}}">
+        <view
+          style="font-size:13px;font-weight:500;color:#505050;padding-left:10px;padding-right:10px;padding-top:3px;padding-bottom:3px;margin:8px;border-radius:5px;border-style:solid;border-width:1px;border-color:#f7f7f7;">
+          {{item.content}}</view>
       </view>
     </view>
   </view>
