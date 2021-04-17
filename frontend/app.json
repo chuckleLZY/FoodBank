@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/personInfo/personInfo",
     "pages/favorite/favorite",
-    "pages/shopDetailedInfo/shopDetailedInfo"
+    "pages/shopDetailedInfo/shopDetailedInfo",
+    "pages/mystery_box/mystery_box"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,6 +22,12 @@
         "text": "首页",
         "iconPath": "/images/main_tabbar.png",
         "selectedIconPath": "/images/main_tabbar_select.png"
+      },
+      {
+        "pagePath": "pages/mystery_box/mystery_box",
+        "text": "盲盒",
+        "iconPath": "/images/person_tabbar.png",
+        "selectedIconPath": "/images/person_tabbar_select.png"
       },
       {
         "pagePath": "pages/personInfo/personInfo",

@@ -8,6 +8,7 @@ Page({
     shop_announcements: [], // 商店公告
     ddl_product: [], // 商店的临期商品列表
     shop_comment: [], // 商店的评论列表
+    mystery_box_list: [], // 商店的盲盒列表
     comment_text: '',
     modalHidden: true, // 评论输入框是否隐藏
     is_collected: false // 是否收藏了
@@ -21,9 +22,9 @@ Page({
     })
     console.log(that.data.shop_id)
     // 获取商店详细信息
-    this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment);
+    this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment, this.get_mysterybox);
   },
-  get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback) {
+  get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback, mysterybox_callback) {
     // 还没有登录
     if (!app.globalData.token) {
       api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
@@ -62,6 +63,8 @@ Page({
     ddl_product_callback(shop_id);
     // 获取商店评论
     shop_comment_callback(shop_id);
+    // 获取商店盲盒
+    mysterybox_callback(shop_id);
   },
   get_announcement(shop_id) {
     api.post('/announcement/query', {
@@ -107,6 +110,19 @@ Page({
     }).then(res => {
       this.setData({
         shop_comment: res.comment_item_list
+      });
+    }).catch(err => {
+      console.log(err);
+    })
+  },
+  get_mysterybox(shop_id) {
+    api.post('/mysterybox/query', {
+      "page_num": 1,
+      "page_size": 100000,
+      "shop_id": shop_id
+    }).then(res => {
+      this.setData({
+        mystery_box_list: res.mystery_box_list
       });
     }).catch(err => {
       console.log(err);
