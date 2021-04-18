@@ -30,6 +30,9 @@
             <view>投诉建议</view>
             <image class="Instru" src=""></image>
         </navigator>
-
+        <navigator class="Trans" url="/pages/my_QRCode/my_QRCode">
+            <view>我的二维码</view>
+            <image class="Instru" ></image>
+        </navigator>
     </view>
 </view>
