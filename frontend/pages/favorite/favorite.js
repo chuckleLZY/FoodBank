@@ -160,11 +160,11 @@ Page({
             console.log(err);
         })
     },
-    to_shop_detail(e){
-console.log(e.currentTarget.dataset.shop_id)
-wx.navigateTo({
-    url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + e.currentTarget.dataset.shop_id,
-  })
+    to_shop_detail(e) {
+        console.log(e.currentTarget.dataset.shop_id)
+        wx.navigateTo({
+            url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + e.currentTarget.dataset.shop_id,
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

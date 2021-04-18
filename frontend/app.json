@@ -27,8 +27,8 @@
       {
         "pagePath": "pages/mystery_box/mystery_box",
         "text": "盲盒",
-        "iconPath": "/images/person_tabbar.png",
-        "selectedIconPath": "/images/person_tabbar_select.png"
+        "iconPath": "/images/mystery.png",
+        "selectedIconPath": "/images/mystery_select.png"
       },
       {
         "pagePath": "pages/personInfo/personInfo",
