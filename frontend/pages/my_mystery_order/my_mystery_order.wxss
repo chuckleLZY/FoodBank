@@ -1,1 +1,7 @@
-/* pages/my_mystery_order/my_mystery_order.wxss */
+.my_card{
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 15px;
+}

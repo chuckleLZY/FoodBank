@@ -25,7 +25,7 @@ Page({
     this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment, this.get_mysterybox);
   },
   get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback, mysterybox_callback) {
-    console.log("app.globalData.token",app.globalData.token)
+    console.log("app.globalData.token", app.globalData.token)
     // 还没有登录
     if (!app.globalData.token) {
       api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {
@@ -93,8 +93,8 @@ Page({
         var expiry_date = new Date(res.ddlproduct_item_list[i].expiry_date)
         res.ddlproduct_item_list[i].production_date = production_date.getFullYear() + '-' + (production_date.getMonth() + 1 < 10 ? '0' + (production_date.getMonth() + 1) : production_date.getMonth() + 1) + '-' + production_date.getDate();
         res.ddlproduct_item_list[i].expiry_date = expiry_date.getFullYear() + '-' + (expiry_date.getMonth() + 1 < 10 ? '0' + (expiry_date.getMonth() + 1) : expiry_date.getMonth() + 1) + '-' + expiry_date.getDate();
-        console.log("res.ddlproduct_item_list[i].production_date", res.ddlproduct_item_list[i].production_date)
-        console.log("res.ddlproduct_item_list[i].expiry_date", res.ddlproduct_item_list[i].expiry_date)
+        // console.log("res.ddlproduct_item_list[i].production_date", res.ddlproduct_item_list[i].production_date)
+        // console.log("res.ddlproduct_item_list[i].expiry_date", res.ddlproduct_item_list[i].expiry_date)
       }
       this.setData({
         ddl_product: res.ddlproduct_item_list
@@ -244,6 +244,53 @@ Page({
     wx.navigateTo({
       url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
     });
+  },
+  // 盲盒下单
+  mysteryboxorder_place(e) {
+    console.log(e)
+    if (!app.globalData.token) {
+      wx.showModal({
+        title: '暂未登录',
+        content: '是否登录',
+        success(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../personInfo/personInfo',
+            })
+          } else if (res.cancel) {}
+        }
+      })
+    } else {
+      api.post('/mysteryboxorder/place', {
+        "product_id": e.currentTarget.dataset.product_id,
+      }).then(res => {
+        console.log(res);
+        if (res.msg == "下订单成功") {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'success',
+            duration: 1000
+          });
+        } else {
+          wx.showToast({
+            title: '同一天只能预定一个盲盒',
+            icon: 'none',
+            duration: 1000
+          });
+        }
+
+      }).catch(err => {
+        console.log(err);
+        wx.showToast({
+          title: '添加失败',
+          icon: 'error',
+          duration: 1000
+        })
+      })
+      this.setData({
+        modalHidden: true
+      })
+    }
   },
   upper(e) {
     console.log(e)

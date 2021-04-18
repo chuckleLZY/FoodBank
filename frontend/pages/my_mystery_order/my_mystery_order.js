@@ -18,6 +18,13 @@ Page({
       "page_size": 100000
     }).then(res => {
       console.log("resresres", res)
+      for (var i in res.mystery_boxes) {
+        var date = new Date(res.mystery_boxes[i].order_time)
+        res.mystery_boxes[i].order_time = date.getFullYear() + '-' + (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-' + date.getDate();
+      }
+      this.setData({
+        mystery_boxes: res.mystery_boxes
+      })
     })
   },
 
