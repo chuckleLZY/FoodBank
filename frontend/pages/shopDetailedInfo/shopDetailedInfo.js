@@ -267,7 +267,7 @@ Page({
         console.log(res);
         if (res.msg == "下订单成功") {
           wx.showToast({
-            title: '添加成功',
+            title: '预定成功',
             icon: 'success',
             duration: 1000
           });
