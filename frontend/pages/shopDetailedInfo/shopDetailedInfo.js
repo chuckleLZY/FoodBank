@@ -25,6 +25,7 @@ Page({
     this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment, this.get_mysterybox);
   },
   get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback, mysterybox_callback) {
+    console.log("app.globalData.token",app.globalData.token)
     // 还没有登录
     if (!app.globalData.token) {
       api.get(`${"/shopinfo/getdetailed?shopId="}${shop_id}`).then(res => {

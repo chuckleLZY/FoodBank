@@ -1,22 +1,26 @@
 <!--pages/first/first.wxml-->
-<view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box" >
+<view style="width: 750rpx; height: 1279rpx; display: block; box-sizing: border-box">
     <view class="flex-container">
-    <view wx:if="{{!avatarUrl}}" style="margin-top:20px;margin-bottom:20px;width:100%;text-align:center">
-        <button  class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap"  >未登录</button>
-    </view>
-        <view class="UserHeadImage" wx:if="{{avatarUrl}}"  >
+        <view wx:if="{{!avatarUrl}}" style="margin-top:20px;margin-bottom:20px;width:100%;text-align:center">
+            <button class="userUnLogin" open-type="getUserInfo" bindtap="showUserInfoTap">未登录</button>
+        </view>
+        <view class="UserHeadImage" wx:if="{{avatarUrl}}">
             <image src='{{avatarUrl}}' />
         </view>
-        <view class="UserName"  wx:if="{{nickName}}" >
-            <view class='user-name' >{{nickName}}</view>
+        <view class="UserName" wx:if="{{nickName}}">
+            <view class='user-name'>{{nickName}}</view>
             <!-- <view class="PersonalitySignature">用户可自定义个性签名(限制字数）</view> -->
         </view>
     </view>
 
     <view class="Mine" wx:if="{{avatarUrl}}">
         <navigator class="Trans" url="/pages/favorite/favorite">
-            <view >我的收藏</view>
-            <image class="Instru" src="/images/favorite.png"></image>
+            <view>我的收藏</view>
+            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
+        </navigator>
+        <navigator class="Trans" url="/pages/my_mystery_order/my_mystery_order">
+            <view>我的盲盒</view>
+            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
         </navigator>
         <navigator class="Trans" url="">
             <view>联系客服</view>
@@ -26,13 +30,6 @@
             <view>投诉建议</view>
             <image class="Instru" src=""></image>
         </navigator>
-        <!-- <navigator class="Trans" url="">
-            <view>商家登录</view>
-            <image class="Instru" src=""></image>
-        </navigator> -->
+
     </view>
-    <!-- <i-button bind:click="handleClick" i type="success" size="large" shape="circle">商家登陆</i-button>
-
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> ？？？</button> -->
 </view>
-

@@ -98,7 +98,7 @@ Page({
   },
   to_shop_info(e) {
     console.log("shop_id", e.currentTarget.dataset.shop_id)
-    wx.navigateTo({
+        wx.navigateTo({
       url: '../shopDetailedInfo/shopDetailedInfo?shop_id=' + e.currentTarget.dataset.shop_id,
     })
   },

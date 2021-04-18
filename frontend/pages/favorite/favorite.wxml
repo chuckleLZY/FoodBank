@@ -1,76 +1,29 @@
 <!--pages/favorite.wxml-->
 <view>
-    <i-tabs current="{{ current }}" color="#9ccd7a" bindchange="handleChange">
-    <i-tab key="all" title="全部"></i-tab>
-    <i-tab key="clothing" title="衣"></i-tab>
-    <i-tab key="food" title="食"></i-tab>
-    <i-tab key="housing" title="住"></i-tab>
-    <i-tab key="transportation" title="行"></i-tab>
-    <i-tab key="play" title="玩"></i-tab>
-</i-tabs>
-<scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
-      bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view wx:for="{{show_on_the_screen_collect}}" wx:for-index="index" wx:for-item="item" wx:key="shop_id">
-        <view class="scroll-view-item">
-          <view class="item">
-            <view class="innerItem">
-              <image class="innerItemCover" src="{{item.avatar}}"></image>
-              <view class="innerItemTest">
-                <view style="font-size:20px">{{item.shop_name}}</view>
-                <view style="font-size:15px; font-weight:300;color:#646464;padding-top:5px">{{item.shop_lohas_info}}</view>
-              </view>
+    <i-tabs current="{{ current }}" color="#9ccd7a" bindchange="handleChange" style="background-color:#ffffff">
+        <i-tab key="all" title="全部"></i-tab>
+        <i-tab key="clothing" title="衣"></i-tab>
+        <i-tab key="food" title="食"></i-tab>
+        <i-tab key="housing" title="住"></i-tab>
+        <i-tab key="transportation" title="行"></i-tab>
+        <i-tab key="play" title="玩"></i-tab>
+    </i-tabs>
+    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
+        bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view wx:for="{{show_on_the_screen_collect}}" wx:for-index="index" wx:for-item="item" wx:key="shop_id">
+            <view class="scroll-view-item" style="padding-top:10px;padding-left:10px;padding-right:10px" data-shop_id='{{item.shop_id}}' bindtap="to_shop_detail">
+                <view class="item">
+                    <view class="innerItem">
+                        <image class="innerItemCover" src="{{item.avatar}}"></image>
+                        <view class="innerItemTest">
+                            <view style="font-size:20px">{{item.shop_name}}</view>
+                            <view style="font-size:15px; font-weight:300;color:#646464;padding-top:5px">
+                                {{item.shop_lohas_info}}</view>
+                        </view>
+                    </view>
+                </view>
             </view>
-          </view>
         </view>
-      </view>
-      <text>\n</text>
+        <text>\n</text>
     </scroll-view>
-<!-- <view  wx:for="{{show_on_the_screen_collect}}" wx:for-index="index" wx:for-item="item" wx:key="shop_id">
-    <i-swipeout  i-class="i-swipeout-demo-item" operateWidth="{{210}}">
-        <view slot="content">
-            <image src="{{item.avatar}}"></image>
-            <i-cell 
-                i-class="i-cell-padding" 
-                title="{{item.shop_name}}"
-                label="{{item.shop_lohas_info}}">
-            </i-cell>
-        </view>
-        <view slot="button" class="i-swipeout-demo-button-group">
-            <view class="i-swipeout-demo-button">点赞</view>
-            <view class="i-swipeout-demo-button">分享</view>
-            <view class="i-swipeout-demo-button">删除</view>
-        </view>
-    </i-swipeout>
-</view> -->
-    <!-- <view class="i-swipeout-demo">
-        <i-swipeout  i-class="i-swipeout-demo-item" operateWidth="{{210}}">
-        <view slot="content">
-            <i-cell 
-                i-class="i-cell-padding" 
-                title="猛虫过江" 
-                label="侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有四年">
-            </i-cell>
-        </view>
-        <view slot="button" class="i-swipeout-demo-button-group">
-            <view class="i-swipeout-demo-button">点赞</view>
-            <view class="i-swipeout-demo-button">分享</view>
-            <view class="i-swipeout-demo-button">删除</view>
-        </view>
-    </i-swipeout>
-    <i-swipeout  i-class="i-swipeout-demo-item" operateWidth="{{180}}">
-        <view slot="content">
-            <i-cell 
-                i-class="i-cell-padding" 
-                title="猛虫过江" 
-                label="侏罗纪世界主题公园及豪华度假村被失控的恐龙们摧毁已有四年">
-            </i-cell>
-        </view>
-        <view slot="button" class="i-swipeout-demo-button-group" style="background:#2db7f5;">
-            <view class="i-swipeout-demo-button" style="width:60px"> <i-icon size="32" type="like_fill"></i-icon></view>
-            <view class="i-swipeout-demo-button" style="width:60px"><i-icon size="32" type="share_fill"></i-icon></view>
-            <view class="i-swipeout-demo-button" style="width:60px"><i-icon size="32" type="delete_fill"></i-icon></view>
-        </view>
-    </i-swipeout>
-    </view> -->
-
 </view>

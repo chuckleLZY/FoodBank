@@ -5,7 +5,8 @@
     "pages/personInfo/personInfo",
     "pages/favorite/favorite",
     "pages/shopDetailedInfo/shopDetailedInfo",
-    "pages/mystery_box/mystery_box"
+    "pages/mystery_box/mystery_box",
+    "pages/my_mystery_order/my_mystery_order"
   ],
   "window": {
     "backgroundTextStyle": "light",
