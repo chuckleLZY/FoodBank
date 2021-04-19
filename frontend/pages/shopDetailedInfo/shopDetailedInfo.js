@@ -11,7 +11,8 @@ Page({
     mystery_box_list: [], // 商店的盲盒列表
     comment_text: '',
     modalHidden: true, // 评论输入框是否隐藏
-    is_collected: false // 是否收藏了
+    is_collected: false, // 是否收藏了
+    width: 0// 手机宽度
   },
   onLoad: function (options) {
     var that = this
@@ -19,6 +20,7 @@ Page({
     var shop_id = JSON.parse(options.shop_id);
     that.setData({
       shop_id: shop_id,
+      width: wx.getSystemInfoSync().windowWidth
     })
     console.log(that.data.shop_id)
     // 获取商店详细信息
@@ -261,35 +263,44 @@ Page({
         }
       })
     } else {
-      api.post('/mysteryboxorder/place', {
-        "product_id": e.currentTarget.dataset.product_id,
-      }).then(res => {
-        console.log(res);
-        if (res.msg == "下订单成功") {
-          wx.showToast({
-            title: '预定成功',
-            icon: 'success',
-            duration: 1000
-          });
-        } else {
-          wx.showToast({
-            title: '同一天只能预定一个盲盒',
-            icon: 'none',
-            duration: 1000
-          });
+      wx.showModal({
+        title: '是否预定',
+        content: '一天只能预定一个盲盒',
+        success(res) {
+          if (res.confirm) {
+            api.post('/mysteryboxorder/place', {
+              "product_id": e.currentTarget.dataset.product_id,
+            }).then(res => {
+              console.log(res);
+              if (res.msg == "下订单成功") {
+                wx.showToast({
+                  title: '预定成功',
+                  icon: 'success',
+                  duration: 1000
+                });
+              } else {
+                wx.showToast({
+                  title: '一天只能预定一个盲盒',
+                  icon: 'none',
+                  duration: 1000
+                });
+              }
+      
+            }).catch(err => {
+              console.log(err);
+              wx.showToast({
+                title: '添加失败',
+                icon: 'error',
+                duration: 1000
+              })
+            })
+            this.setData({
+              modalHidden: true
+            })
+          } else if (res.cancel) {}
         }
+      })
 
-      }).catch(err => {
-        console.log(err);
-        wx.showToast({
-          title: '添加失败',
-          icon: 'error',
-          duration: 1000
-        })
-      })
-      this.setData({
-        modalHidden: true
-      })
     }
   },
   upper(e) {

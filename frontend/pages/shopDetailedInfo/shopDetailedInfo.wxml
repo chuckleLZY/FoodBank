@@ -109,7 +109,7 @@
                   <view style="font-size:15px;color:red">￥{{item.price}}</view>
                 </view>
               </view>
-              <view style="float:right;padding-top:30px;padding-left:40px" bindtap="mysteryboxorder_place"
+              <view style="float:right;padding-top:30px;padding-left:{{(width-280)/2-15}}px" bindtap="mysteryboxorder_place"
                 data-product_id="{{item.product_id}}">
                 <image src="../../images/task.png" style="height:20px;width:20px;"></image>
                 <view style="font-size:10px;font-weight:300;color:#a6a6a6;">预定</view>

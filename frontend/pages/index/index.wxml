@@ -22,7 +22,7 @@
         style="background:{{housing_background}};border-radius:20px;width:90px;color:{{housing_color}}">住</button>
     </view>
     <view class="my_scroll-view-item_H"> <button class="mini-btn" type="default" bindtap="get_transportation"
-        style="background{{transportation_background}};border-radius:20px;width:90px;color:{{transportation_color}}">行</button>
+        style="background:{{transportation_background}};border-radius:20px;width:90px;color:{{transportation_color}}">行</button>
     </view>
   </scroll-view>
   <!-- 改变上层信息层的按钮 -->
