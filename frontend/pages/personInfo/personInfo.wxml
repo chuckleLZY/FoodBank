@@ -15,14 +15,22 @@
 
     <view class="Mine" wx:if="{{avatarUrl}}">
         <navigator class="Trans" url="/pages/favorite/favorite">
-            <view>我的收藏</view>
+            <view>店铺收藏</view>
             <!-- <image class="Instru" src="/images/favorite.png"></image> -->
         </navigator>
-        <navigator class="Trans" url="/pages/my_mystery_order/my_mystery_order">
+        <navigator class="Trans" url="/pages/my_ddl_product_order/my_ddl_product_order">
+            <view>我的订单</view>
+            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
+        </navigator>
+        <navigator class="Trans" url="/pages/chart/chart">
+            <view>绿色成就</view>
+            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
+        </navigator>
+        <!-- <navigator class="Trans" url="/pages/my_mystery_order/my_mystery_order">
             <view>我的盲盒</view>
-            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
-        </navigator>
-        <navigator class="Trans" url="">
+            <image class="Instru" src="/images/favorite.png"></image> 
+        </navigator> -->
+        <!-- <navigator class="Trans" url="">
             <view>联系客服</view>
             <image class="Instru" src=""></image>
         </navigator>
@@ -33,6 +41,6 @@
         <navigator class="Trans" url="/pages/my_QRCode/my_QRCode">
             <view>我的二维码</view>
             <image class="Instru" ></image>
-        </navigator>
+        </navigator> -->
     </view>
 </view>

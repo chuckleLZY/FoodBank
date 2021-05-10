@@ -13,9 +13,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    api.post('/mysteryboxorder/userorder', {
+    api.post('/ddlproductorder/userorder', {
       "page_num": 1,
-      "page_size": 100000
+      "page_size": 1000000
     }).then(res => {
       console.log("resresres", res)
       for (var i in res.mystery_boxes) {

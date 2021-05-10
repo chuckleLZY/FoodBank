@@ -8,7 +8,7 @@ Page({
     shop_announcements: [], // 商店公告
     ddl_product: [], // 商店的临期商品列表
     shop_comment: [], // 商店的评论列表
-    mystery_box_list: [], // 商店的盲盒列表
+    // mystery_box_list: [], // 商店的盲盒列表
     comment_text: '',
     modalHidden: true, // 评论输入框是否隐藏
     is_collected: false, // 是否收藏了
@@ -24,7 +24,7 @@ Page({
     })
     console.log(that.data.shop_id)
     // 获取商店详细信息
-    this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment, this.get_mysterybox);
+    this.get_shop_detail(that.data.shop_id, this.get_announcement, this.get_ddl_products, this.get_shop_comment);
   },
   get_shop_detail(shop_id, get_announcement_callback, ddl_product_callback, shop_comment_callback, mysterybox_callback) {
     console.log("app.globalData.token", app.globalData.token)
@@ -66,8 +66,8 @@ Page({
     ddl_product_callback(shop_id);
     // 获取商店评论
     shop_comment_callback(shop_id);
-    // 获取商店盲盒
-    mysterybox_callback(shop_id);
+    // // 获取商店盲盒
+    // mysterybox_callback(shop_id);
   },
   get_announcement(shop_id) {
     api.post('/announcement/query', {
@@ -118,19 +118,19 @@ Page({
       console.log(err);
     })
   },
-  get_mysterybox(shop_id) {
-    api.post('/mysterybox/query', {
-      "page_num": 1,
-      "page_size": 100000,
-      "shop_id": shop_id
-    }).then(res => {
-      this.setData({
-        mystery_box_list: res.mystery_box_list
-      });
-    }).catch(err => {
-      console.log(err);
-    })
-  },
+  // get_mysterybox(shop_id) {
+  //   api.post('/mysterybox/query', {
+  //     "page_num": 1,
+  //     "page_size": 100000,
+  //     "shop_id": shop_id
+  //   }).then(res => {
+  //     this.setData({
+  //       mystery_box_list: res.mystery_box_list
+  //     });
+  //   }).catch(err => {
+  //     console.log(err);
+  //   })
+  // },
   comment() {
     // 评论
     // 如果没有token，就跳转到登录页面
@@ -248,7 +248,7 @@ Page({
     });
   },
   // 盲盒下单
-  mysteryboxorder_place(e) {
+  ddlproduct_place(e) {
     console.log(e)
     if (!app.globalData.token) {
       wx.showModal({
@@ -265,10 +265,10 @@ Page({
     } else {
       wx.showModal({
         title: '是否预定',
-        content: '一天只能预定一个盲盒',
+        // content: '一天只能预定一个盲盒',
         success(res) {
           if (res.confirm) {
-            api.post('/mysteryboxorder/place', {
+            api.post('/ddlproductorder/place', {
               "product_id": e.currentTarget.dataset.product_id,
             }).then(res => {
               console.log(res);
@@ -280,7 +280,7 @@ Page({
                 });
               } else {
                 wx.showToast({
-                  title: '一天只能预定一个盲盒',
+                  title: '预定失败',
                   icon: 'none',
                   duration: 1000
                 });
@@ -293,9 +293,6 @@ Page({
                 icon: 'error',
                 duration: 1000
               })
-            })
-            this.setData({
-              modalHidden: true
             })
           } else if (res.cancel) {}
         }

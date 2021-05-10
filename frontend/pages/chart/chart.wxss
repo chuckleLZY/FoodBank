@@ -1,0 +1,14 @@
+.echart_wrap{
+  width: 100%;
+  height: 680rpx;
+}
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.divLine {
+  background: #F4F4F4;
+  width: 100%;
+  height: 20rpx;
+}

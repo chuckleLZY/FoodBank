@@ -82,34 +82,7 @@
                   style="font-size:10px;font-weight:300;color:#a6a6a6;padding-top:5px;padding-left:5px;text-decoration:line-through">
                   ￥{{item.origin_cost}}</view>
               </view>
-            </view>
-          </view>
-        </view>
-
-      </view>
-    </view>
-  </view>
-
-  <view class="my_card" wx:if="{{mystery_box_list.length>0}}">
-    <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">盲盒</view>
-    <view style="padding-bottom:15px">
-      <view class="menu_item" style="padding-top:8px" wx:for="{{mystery_box_list}}" wx:for-index="index"
-        wx:for-item="item" wx:key="product_id">
-        <view style="background-color:#f5f5f5;border-radius:10px;">
-          <view style="padding:10px;display:flex;width:100%">
-            <image src="{{item.product_pic}}" style="border-radius:10px;width:80px;height:80px"></image>
-            <view style="padding-left:10px;">
-              <view style="float:left">
-                <view>{{item.product_name}}</view>
-                <view style="font-size:13px; font-weight:300;color:#a6a6a6;padding-top:5px">
-                  {{item.product_intro}}</view>
-                <view style="font-size:10px; font-weight:200;color:#a6a6a6;padding-top:5px">
-                  发布日期：{{item.product_pubdate}}</view>
-                <view style="display:flex;padding-top:5px">
-                  <view style="font-size:15px;color:red">￥{{item.price}}</view>
-                </view>
-              </view>
-              <view style="float:right;padding-top:30px;padding-left:{{(width-280)/2-15}}px" bindtap="mysteryboxorder_place"
+              <view style="float:right;padding-top:30px;padding-left:{{(width-280)/2-15}}px" bindtap="ddlproduct_place"
                 data-product_id="{{item.product_id}}">
                 <image src="../../images/task.png" style="height:20px;width:20px;"></image>
                 <view style="font-size:10px;font-weight:300;color:#a6a6a6;">预定</view>
@@ -120,6 +93,7 @@
       </view>
     </view>
   </view>
+
   <view class="my_card">
     <view style="font-size:18px;font-weight:500;color:#000000;padding-top:8px;padding-bottom:8px">评论</view>
     <view style="width:100%;display:flex;flex-wrap:wrap;padding-bottom:8px">
