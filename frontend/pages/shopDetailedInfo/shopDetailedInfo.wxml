@@ -69,24 +69,26 @@
         wx:key="ddl_product_id">
         <view style="background-color:#f5f5f5;border-radius:10px;">
           <view style="padding:10px;display:flex">
-            <image src="{{item.product_pic}}" style="border-radius:10px;width:80px;height:80px"></image>
-            <view style="padding-left:10px">
+            <image src="{{item.product_pic}}" style="border-radius:10px;width:100px;height:100px;padding-top:4px"></image>
+            <view style="padding-left:30px">
               <view>{{item.product_name}}</view>
               <view style="font-size:13px; font-weight:300;color:#a6a6a6;padding-top:5px">
                 {{item.product_intro}}</view>
               <view style="font-size:10px; font-weight:200;color:#a6a6a6;padding-top:5px">
-                生产日期：{{item.production_date}} 过期日期：{{item.expiry_date}}</view>
+                生产日期：{{item.production_date}}</view>
+              <view style="font-size:10px; font-weight:200;color:#a6a6a6;padding-top:5px">
+                过期日期：{{item.expiry_date}}</view>
               <view style="display:flex;padding-top:5px">
                 <view style="font-size:15px;color:red">￥{{item.current_cost}}</view>
                 <view
                   style="font-size:10px;font-weight:300;color:#a6a6a6;padding-top:5px;padding-left:5px;text-decoration:line-through">
                   ￥{{item.origin_cost}}</view>
               </view>
-              <view style="float:right;padding-top:30px;padding-left:{{(width-280)/2-15}}px" bindtap="ddlproduct_place"
-                data-product_id="{{item.product_id}}">
-                <image src="../../images/task.png" style="height:20px;width:20px;"></image>
-                <view style="font-size:10px;font-weight:300;color:#a6a6a6;">预定</view>
-              </view>
+            </view>
+            <view style="float:right;padding-top:40px;padding-left:{{(width-280)/2-15}}px" bindtap="ddlproduct_place"
+              data-product_id="{{item.product_id}}">
+              <image src="../../images/task.png" style="height:20px;width:20px;"></image>
+              <view style="font-size:10px;font-weight:300;color:#a6a6a6;">预定</view>
             </view>
           </view>
         </view>

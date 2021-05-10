@@ -21,11 +21,11 @@ Page({
     food_background: "#FFFFFF",
     housing_background: "#FFFFFF",
     transportation_background: "#FFFFFF",
-    all_color:"#000000",
-    clothing_color:"#000000",
-    food_color:"#000000",
-    housing_color:"#000000",
-    transportation_color:"#000000",
+    all_color: "#000000",
+    clothing_color: "#000000",
+    food_color: "#000000",
+    housing_color: "#000000",
+    transportation_color: "#000000",
   },
   onLoad: function (options) {
     api.post('/shopinfo/getbrief', {
@@ -45,16 +45,16 @@ Page({
       }
       this.setData({
         shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
-        all_background:"#885fe9",
-        clothing_background:"#FFFFFF",
-        food_background:"#FFFFFF",
-        housing_background:"#FFFFFF",
-        transportation_background:"#FFFFFF",
-        all_color:"#FFFFFF",
-        clothing_color:"#000000",
-        food_color:"#000000",
-        housing_color:"#000000",
-        transportation_color:"#000000",
+        all_background: "#885fe9",
+        clothing_background: "#FFFFFF",
+        food_background: "#FFFFFF",
+        housing_background: "#FFFFFF",
+        transportation_background: "#FFFFFF",
+        all_color: "#FFFFFF",
+        clothing_color: "#000000",
+        food_color: "#000000",
+        housing_color: "#000000",
+        transportation_color: "#000000",
       })
       // console.log("this.data.shop_briefinfo_items_that_shows_on_the_screen", this.data.shop_briefinfo_items_that_shows_on_the_screen)
       this.setMarkers();
@@ -127,16 +127,16 @@ Page({
       }
       this.setData({
         shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
-        all_background:"#885fe9",
-        clothing_background:"#FFFFFF",
-        food_background:"#FFFFFF",
-        housing_background:"#FFFFFF",
-        transportation_background:"#FFFFFF",
-        all_color:"#FFFFFF",
-        clothing_color:"#000000",
-        food_color:"#000000",
-        housing_color:"#000000",
-        transportation_color:"#000000",
+        all_background: "#885fe9",
+        clothing_background: "#FFFFFF",
+        food_background: "#FFFFFF",
+        housing_background: "#FFFFFF",
+        transportation_background: "#FFFFFF",
+        all_color: "#FFFFFF",
+        clothing_color: "#000000",
+        food_color: "#000000",
+        housing_color: "#000000",
+        transportation_color: "#000000",
       })
       this.setMarkers();
     }).catch(err => {
@@ -159,36 +159,36 @@ Page({
       }
       this.setData({
         shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
-        all_background:"#FFFFFF",
-        clothing_background:"#FFFFFF",
-        food_background:"#FFFFFF",
-        housing_background:"#FFFFFF",
-        transportation_background:"#FFFFFF",
-        all_color:"#000000",
-        clothing_color:"#000000",
-        food_color:"#000000",
-        housing_color:"#000000",
-        transportation_color:"#000000",
+        all_background: "#FFFFFF",
+        clothing_background: "#FFFFFF",
+        food_background: "#FFFFFF",
+        housing_background: "#FFFFFF",
+        transportation_background: "#FFFFFF",
+        all_color: "#000000",
+        clothing_color: "#000000",
+        food_color: "#000000",
+        housing_color: "#000000",
+        transportation_color: "#000000",
       })
-      if(shop_type=="clothing"){
+      if (shop_type == "clothing") {
         this.setData({
-          clothing_background:"#885fe9",
-          clothing_color:"#FFFFFF",
+          clothing_background: "#885fe9",
+          clothing_color: "#FFFFFF",
         })
-      }else if(shop_type=="food"){
+      } else if (shop_type == "food") {
         this.setData({
-          food_background:"#885fe9",
-          food_color:"#FFFFFF",
+          food_background: "#885fe9",
+          food_color: "#FFFFFF",
         })
-      }else if(shop_type=="housing"){
+      } else if (shop_type == "housing") {
         this.setData({
-          housing_background:"#885fe9",
-          housing_color:"#FFFFFF",
+          housing_background: "#885fe9",
+          housing_color: "#FFFFFF",
         })
-      }else if(shop_type=="transportation"){
+      } else if (shop_type == "transportation") {
         this.setData({
-          transportation_background:"#885fe9",
-          transportation_color:"#FFFFFF",
+          transportation_background: "#885fe9",
+          transportation_color: "#FFFFFF",
         })
       }
       this.setMarkers();
@@ -261,6 +261,9 @@ Page({
       }, 500);
     }
   },
+  handleSearch() {
+    console.log("handleSearch")
+  },
   upper(e) {
     console.log(e)
   },
@@ -291,4 +294,5 @@ Page({
       scrollTop: this.data.scrollTop + 10
     })
   },
+
 })

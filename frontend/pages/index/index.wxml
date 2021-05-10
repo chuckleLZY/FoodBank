@@ -6,6 +6,7 @@
 </view>
 <view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
   <!-- 回到当前定位的图标 -->
+  <searchbar placeholder="请输入关键字" bind:handleSearch="handleSearch" style="position:fixed;top:0rpx;width:100%"></searchbar>
   <cover-view class='top_nav_c' bindtap='bindtap'>
     <cover-image src='../../images/position.png' class='c_img'></cover-image>
   </cover-view>
@@ -42,7 +43,8 @@
               <image class="innerItemCover" src="{{item.avatar}}"></image>
               <view class="innerItemTest">
                 <view style="font-size:20px">{{item.shop_name}}</view>
-                <view style="font-size:15px; font-weight:300;color:#646464;padding-top:5px">{{item.shop_lohas_info}}</view>
+                <view style="font-size:15px; font-weight:300;color:#646464;padding-top:5px">{{item.shop_lohas_info}}
+                </view>
               </view>
             </view>
           </view>
