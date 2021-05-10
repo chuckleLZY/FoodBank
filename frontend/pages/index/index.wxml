@@ -4,9 +4,10 @@
     bindmarkertap='bindmarkertap' show-location='true'>
   </map>
 </view>
+<searchbar placeholder="请输入关键字" bind:handleSearch="handleSearch" style="position:fixed;top:0rpx;width:100%"></searchbar>
+
 <view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
   <!-- 回到当前定位的图标 -->
-  <searchbar placeholder="请输入关键字" bind:handleSearch="handleSearch" style="position:fixed;top:0rpx;width:100%"></searchbar>
   <cover-view class='top_nav_c' bindtap='bindtap'>
     <cover-image src='../../images/position.png' class='c_img'></cover-image>
   </cover-view>
