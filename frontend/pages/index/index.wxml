@@ -4,8 +4,18 @@
     bindmarkertap='bindmarkertap' show-location='true'>
   </map>
 </view>
-<searchbar placeholder="请输入关键字" bind:handleSearch="handleSearch" style="position:fixed;top:0rpx;width:100%"></searchbar>
+<!-- <searchbar placeholder="请输入关键字" bind:handleSearch="handleSearch" style="position:fixed;top:0rpx;width:100%"></searchbar> -->
 
+<view class="searchbar" style="position:fixed;top:0rpx;width:100%">
+  <view class="content">
+    <image src="../../images/search.png" class="search-icon" style="padding-left:10px"></image>
+    <input bindinput="handleInput" bindconfirm="handleConfirm" type="text" value="{{inputValue}}"
+      placeholder="{{placeholder}}" class="input" confirm-type="search" bindconfirm="search"></input>
+    <image wx:if="{{inputValue}}" bindtap="handleDeleteClick" src="../../images/delete.png" class="delete-icon"
+      style="padding-right:10px"></image>
+  </view>
+  <!-- <view wx:if="{{inputValue}}" bindtap="handleTextbtnClick" class="text-btn">取消</view> -->
+</view>
 <view class="upperView" style="top:{{upperViewTop}}px;height:{{upperViewHeight}}px" animation="{{ani}}">
   <!-- 回到当前定位的图标 -->
   <cover-view class='top_nav_c' bindtap='bindtap'>

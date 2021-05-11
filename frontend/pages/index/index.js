@@ -5,6 +5,7 @@ const app = getApp()
 
 Page({
   data: {
+    shop_type: "", //当前展示的商店类型
     total_shop_briefinfo_items: [],
     heightRange: 0,
     shop_briefinfo_items_that_shows_on_the_screen: [],
@@ -126,7 +127,8 @@ Page({
         temp_shop_briefinfo_items_that_shows_on_the_screen.push(this.data.total_shop_briefinfo_items[i])
       }
       this.setData({
-        shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
+        shop_type: "",
+        // shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
         all_background: "#885fe9",
         clothing_background: "#FFFFFF",
         food_background: "#FFFFFF",
@@ -138,6 +140,7 @@ Page({
         housing_color: "#000000",
         transportation_color: "#000000",
       })
+      this.search();
       this.setMarkers();
     }).catch(err => {
       console.log(err);
@@ -158,7 +161,7 @@ Page({
         temp_shop_briefinfo_items_that_shows_on_the_screen.push(this.data.total_shop_briefinfo_items[i])
       }
       this.setData({
-        shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
+        // shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen,
         all_background: "#FFFFFF",
         clothing_background: "#FFFFFF",
         food_background: "#FFFFFF",
@@ -172,25 +175,30 @@ Page({
       })
       if (shop_type == "clothing") {
         this.setData({
+          shop_type: "clothing",
           clothing_background: "#885fe9",
           clothing_color: "#FFFFFF",
         })
       } else if (shop_type == "food") {
         this.setData({
+          shop_type: "food",
           food_background: "#885fe9",
           food_color: "#FFFFFF",
         })
       } else if (shop_type == "housing") {
         this.setData({
+          shop_type: "housing",
           housing_background: "#885fe9",
           housing_color: "#FFFFFF",
         })
       } else if (shop_type == "transportation") {
         this.setData({
+          shop_type: "transportation",
           transportation_background: "#885fe9",
           transportation_color: "#FFFFFF",
         })
       }
+      this.search();
       this.setMarkers();
     }).catch(err => {
       console.log(err);
@@ -261,8 +269,70 @@ Page({
       }, 500);
     }
   },
-  handleSearch() {
-    console.log("handleSearch")
+  handleInput: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  // 点击清空输入框icon
+  handleDeleteClick: function () {
+    this.setData({
+      inputValue: ''
+    })
+  },
+  // 点击取消触发
+  handleTextbtnClick() {
+    // 触发父组件中的方法
+    this.setData({
+      inputValue: ''
+    })
+  },
+  // 用户点击确定触发
+  handleConfirm() {
+    this.triggerEvent('handleSearch', this.data.inputValue)
+  },
+  filter(list, keyWord) {
+    console.log("list", list)
+    var reg = new RegExp(keyWord);
+    var arr = [];
+    for (var i = 0; i < list.length; i++) {
+      if (reg.test(list[i].shop_name)) {
+        arr.push(list[i]);
+      }
+    }
+    console.log("filter", arr)
+    return arr;
+  },
+  search() {
+    console.log("search", this.data.inputValue)
+
+    // this.filter(this.data.total_shop_briefinfo_items, this.data.inputValue)
+
+    this.setData({
+      shop_briefinfo_items_that_shows_on_the_screen: this.filter(this.data.total_shop_briefinfo_items, this.data.inputValue)
+    })
+    // api.post('/shopinfo/search', {
+    //   // 这里的pagesize设为无限大？
+    //   "page_num": 1,
+    //   "page_size": 100000,
+    //   "keyword": this.data.inputValue
+    // }).then(res => {
+    //   console.log("searchRes", res)
+    //   this.setData({
+    //     total_shop_briefinfo_items: res.shop_briefinfo_items
+    //   })
+    //   console.log("total_shop_briefinfo_items", this.data.total_shop_briefinfo_items)
+    //   var temp_shop_briefinfo_items_that_shows_on_the_screen = []
+    //   for (var i in this.data.total_shop_briefinfo_items) {
+    //     if (this.data.total_shop_briefinfo_items[i].shop_type == this.data.shop_type || this.data.shop_type == "") {
+    //       temp_shop_briefinfo_items_that_shows_on_the_screen.push(this.data.total_shop_briefinfo_items[i])
+    //     }
+    //   }
+    //   this.setData({
+    //     shop_briefinfo_items_that_shows_on_the_screen: temp_shop_briefinfo_items_that_shows_on_the_screen
+    //   })
+    //   this.setMarkers();
+    // })
   },
   upper(e) {
     console.log(e)
