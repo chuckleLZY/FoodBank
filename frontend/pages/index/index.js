@@ -173,27 +173,27 @@ Page({
         housing_color: "#000000",
         transportation_color: "#000000",
       })
-      if (shop_type == "clothing") {
+      if (shop_type == "bread") {
         this.setData({
-          shop_type: "clothing",
+          shop_type: "bread",
           clothing_background: "#885fe9",
           clothing_color: "#FFFFFF",
         })
-      } else if (shop_type == "food") {
+      } else if (shop_type == "fruit") {
         this.setData({
-          shop_type: "food",
+          shop_type: "fruit",
           food_background: "#885fe9",
           food_color: "#FFFFFF",
         })
-      } else if (shop_type == "housing") {
+      } else if (shop_type == "market") {
         this.setData({
-          shop_type: "housing",
+          shop_type: "market",
           housing_background: "#885fe9",
           housing_color: "#FFFFFF",
         })
-      } else if (shop_type == "transportation") {
+      } else if (shop_type == "others") {
         this.setData({
-          shop_type: "transportation",
+          shop_type: "others",
           transportation_background: "#885fe9",
           transportation_color: "#FFFFFF",
         })
@@ -204,17 +204,21 @@ Page({
       console.log(err);
     })
   },
+  //面包
   get_clothing() {
-    this.get_brief_by_type("clothing");
+    this.get_brief_by_type("bread");
   },
+  //水果
   get_food() {
-    this.get_brief_by_type("food");
+    this.get_brief_by_type("fruit");
   },
+  //商超
   get_housing() {
-    this.get_brief_by_type("housing");
+    this.get_brief_by_type("market");
   },
+  //其他
   get_transportation() {
-    this.get_brief_by_type("transportation");
+    this.get_brief_by_type("others");
   },
   to_shop_detail(e) {
     console.log(e.currentTarget.dataset.shop_id); //这玩意是shop_id

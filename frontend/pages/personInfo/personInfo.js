@@ -14,13 +14,9 @@ Page({
     // 授权
     wx.getUserProfile({
       desc: '快把信息给我', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res.userInfo);
-        this.setData({
-          userInfo: res.userInfo,
-          nickName: res.userInfo.nickName,
-          avatarUrl: res.userInfo.avatarUrl
-        });
+      success: (wxres) => {
+        console.log(wxres.userInfo);
+
         // wx.login 获得用户的unionID
         wx.login({
           success: res => {
@@ -42,8 +38,14 @@ Page({
                 console.log("loginError", error);
               }
             })
+            this.setData({
+              userInfo: wxres.userInfo,
+              nickName: wxres.userInfo.nickName,
+              avatarUrl: wxres.userInfo.avatarUrl
+            });
           }
         })
+
       },
       fail: (res) => {
         console.log('getUserProfileFail', res);
