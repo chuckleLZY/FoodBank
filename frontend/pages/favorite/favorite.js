@@ -127,19 +127,19 @@ Page({
         }).then(res => {
             console.log('collectSuccess', res);
             var all_collect = [];
-            var clothing_collect = []; // 衣
-            var food_collect = []; // 食物
-            var housing_collect = []; // 住
-            var transportation_collect = []; // 行
+            var clothing_collect = []; // 面包
+            var food_collect = []; // 水果
+            var housing_collect = []; // 商超
+            var transportation_collect = []; // 其他
             for (var i in res.shop_briefinfo_items) {
                 all_collect.push(res.shop_briefinfo_items[i])
-                if (res.shop_briefinfo_items[i].shop_type == "clothing") {
+                if (res.shop_briefinfo_items[i].shop_type == "bread") {
                     clothing_collect.push(res.shop_briefinfo_items[i])
-                } else if (res.shop_briefinfo_items[i].shop_type == "food") {
+                } else if (res.shop_briefinfo_items[i].shop_type == "fruit") {
                     food_collect.push(res.shop_briefinfo_items[i])
-                } else if (res.shop_briefinfo_items[i].shop_type == "housing") {
+                } else if (res.shop_briefinfo_items[i].shop_type == "market") {
                     housing_collect.push(res.shop_briefinfo_items[i])
-                } else if (res.shop_briefinfo_items[i].shop_type == "transportation") {
+                } else if (res.shop_briefinfo_items[i].shop_type == "others") {
                     transportation_collect.push(res.shop_briefinfo_items[i])
                 }
             };

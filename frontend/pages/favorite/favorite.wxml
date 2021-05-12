@@ -2,11 +2,10 @@
 <view>
     <i-tabs current="{{ current }}" color="#9ccd7a" bindchange="handleChange" style="background-color:#ffffff">
         <i-tab key="all" title="全部"></i-tab>
-        <i-tab key="clothing" title="衣"></i-tab>
-        <i-tab key="food" title="食"></i-tab>
-        <i-tab key="housing" title="住"></i-tab>
-        <i-tab key="transportation" title="行"></i-tab>
-        <i-tab key="play" title="玩"></i-tab>
+        <i-tab key="clothing" title="面包"></i-tab>
+        <i-tab key="food" title="水果"></i-tab>
+        <i-tab key="housing" title="商超"></i-tab>
+        <i-tab key="transportation" title="其他"></i-tab>
     </i-tabs>
     <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower"
         bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
