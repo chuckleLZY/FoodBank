@@ -5,7 +5,8 @@
     "pages/favorite/favorite",
     "pages/shopDetailedInfo/shopDetailedInfo",
     "pages/chart/chart",
-    "pages/my_ddl_product_order/my_ddl_product_order"
+    "pages/my_ddl_product_order/my_ddl_product_order",
+    "pages/checkOrder/checkOrder"
   ],
   "window": {
     "backgroundTextStyle": "light",

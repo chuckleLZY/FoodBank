@@ -26,6 +26,10 @@
             <view>绿色成就</view>
             <!-- <image class="Instru" src="/images/favorite.png"></image> -->
         </navigator>
+        <navigator class="Trans" url="/pages/checkOrder/checkOrder">
+            <view>确认订单</view>
+            <!-- <image class="Instru" src="/images/favorite.png"></image> -->
+        </navigator>
         <!-- <navigator class="Trans" url="/pages/my_mystery_order/my_mystery_order">
             <view>我的盲盒</view>
             <image class="Instru" src="/images/favorite.png"></image> 

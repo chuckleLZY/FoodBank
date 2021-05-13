@@ -1,0 +1,29 @@
+.photo_box{
+  width: 750rpx;
+  border: 1px solid #cccccc;
+  box-sizing: border-box;
+}
+.photo_text{
+  width: 100%;
+  line-height: 500rpx;
+  text-align: center;
+}
+.photo_preview image{
+  width: 750rpx;
+}
+.photo_preview .confirm{
+  /* width: 750rpx; */
+  height: 100rpx;
+  background-color: #3F8EFF;
+  text-align: center;
+  line-height: 100rpx;
+  border-top: 1px solid #cccccc;
+}
+.photo_preview .reselect{
+  /* width: 750rpx; */
+  height: 100rpx;
+  background-color: #3F8EFF;
+  text-align: center;
+  line-height: 100rpx;
+  border-top: 1px solid #cccccc;
+}

@@ -1,0 +1,8 @@
+<view class="photo_box">
+  <view wx:if="{{photo_src != ''}}" class="photo_preview">
+    <image src="{{photo_src}}" mode="aspectFit" bindtap="photo_preview"></image>
+    <view class="reselect" bindtap="reselect">重新选择</view>
+    <view class="confirm" bindtap="confirm">确认</view>
+  </view>
+  <view wx:else class="photo_text" bindtap="chose_photo">点击拍照或上传本地照片</view>
+</view>
